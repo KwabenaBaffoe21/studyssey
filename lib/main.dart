@@ -4,14 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studyssey/services/firebase_options.dart';
 import 'package:studyssey/routes.dart';
 import 'package:studyssey/screens/homepage/homepage.dart';
 import 'package:studyssey/screens/onboarding/onboardingpage.dart';
+import 'package:studyssey/services/firebase_options.dart';
 
 import 'constant.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   try {
     await Firebase.initializeApp(
@@ -25,8 +25,15 @@ Future<void> main() async {
   }
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
-  runApp(
-    MaterialApp(
+  runApp(const Studyssey());
+}
+
+class Studyssey extends StatelessWidget {
+  const Studyssey({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Studyssey',
       themeMode: ThemeMode.system,
@@ -43,50 +50,51 @@ Future<void> main() async {
         ),
         useMaterial3: true,
         textTheme: TextTheme(
-            titleMedium: GoogleFonts.manrope(
-              fontSize: 13.33,
-              fontWeight: FontWeight.w500,
-            ),
-            titleLarge: GoogleFonts.manrope(
-              fontSize: 24.44,
-              fontWeight: FontWeight.w700,
-            ),
-            titleSmall: GoogleFonts.manrope(
-              fontWeight: FontWeight.w500,
-              fontSize: 11.11,
-            ),
-            bodyLarge: GoogleFonts.manrope(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-            bodyMedium: GoogleFonts.manrope(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-            bodySmall: GoogleFonts.manrope(
-              fontSize: 13.33,
-              fontWeight: FontWeight.w700,
-            ),
-            displayLarge: GoogleFonts.manrope(
-              fontSize: 36,
-              fontWeight: FontWeight.w500,
-            ),
-            displayMedium: GoogleFonts.manrope(
-              fontSize: 22.22,
-              fontWeight: FontWeight.w700,
-            ),
-            displaySmall: GoogleFonts.manrope(
-              fontSize: 9,
-              fontWeight: FontWeight.w500,
-            ),
-            labelMedium: GoogleFonts.manrope(
-              fontWeight: FontWeight.w600,
-              fontSize: 14.81,
-            ),
-            labelSmall: GoogleFonts.manrope(
-              fontSize: 6.67,
-              fontWeight: FontWeight.w500,
-            )),
+          titleMedium: GoogleFonts.manrope(
+            fontSize: 13.33,
+            fontWeight: FontWeight.w500,
+          ),
+          titleLarge: GoogleFonts.manrope(
+            fontSize: 24.44,
+            fontWeight: FontWeight.w700,
+          ),
+          titleSmall: GoogleFonts.manrope(
+            fontWeight: FontWeight.w500,
+            fontSize: 11.11,
+          ),
+          bodyLarge: GoogleFonts.manrope(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
+          bodyMedium: GoogleFonts.manrope(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+          ),
+          bodySmall: GoogleFonts.manrope(
+            fontSize: 13.33,
+            fontWeight: FontWeight.w700,
+          ),
+          displayLarge: GoogleFonts.manrope(
+            fontSize: 36,
+            fontWeight: FontWeight.w500,
+          ),
+          displayMedium: GoogleFonts.manrope(
+            fontSize: 22.22,
+            fontWeight: FontWeight.w700,
+          ),
+          displaySmall: GoogleFonts.manrope(
+            fontSize: 9,
+            fontWeight: FontWeight.w500,
+          ),
+          labelMedium: GoogleFonts.manrope(
+            fontWeight: FontWeight.w600,
+            fontSize: 14.81,
+          ),
+          labelSmall: GoogleFonts.manrope(
+            fontSize: 6.67,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 0,
           backgroundColor: scaffold,
@@ -134,6 +142,21 @@ Future<void> main() async {
           ? OnboardingPage.routeName
           : HomePage.routeName,
       routes: routes,
-    ),
-  );
+      home: const LoadingScreen(),
+
+    );
+  }
+}
+
+class LoadingScreen extends StatelessWidget {
+  const LoadingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
+      ),
+    );
+  }
 }
