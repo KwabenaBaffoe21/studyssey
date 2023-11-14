@@ -1,0 +1,10 @@
+flutter_native_splash:
+  color: "#201f68"
+  image: images/android/res/mipmap-xxxhdpi/Studyssey_monochrome.png
+
+  android_12:
+    color: "#201f68"
+    image: images/android/res/mipmap-xxxhdpi/Studyssey_monochrome.png
+
+    web: false
+    ios: false

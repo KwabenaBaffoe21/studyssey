@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "731126269371",
+    "project_id": "studyssey-d4df3",
+    "storage_bucket": "studyssey-d4df3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731126269371:android:2ae2766d1fe87a0fa9709e",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdofluvDiVWtjn4zx8iuZrAeBp6eRxxrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731126269371:android:7a174026fd657142a9709e",
+        "android_client_info": {
+          "package_name": "com.example.firestore_demo.firestore_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdofluvDiVWtjn4zx8iuZrAeBp6eRxxrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731126269371:android:dd118b8bed68b4eca9709e",
+        "android_client_info": {
+          "package_name": "com.studyssey.studyssey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdofluvDiVWtjn4zx8iuZrAeBp6eRxxrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731126269371-qs6cp6bc8m5m7btv1omvpaqhsbdk5dqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
