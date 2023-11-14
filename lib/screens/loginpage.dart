@@ -97,8 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 43.33, bottom: 35.56),
+                        padding: const EdgeInsets.only(top: 43.33, bottom: 35.56),
                         child: Form(
                           key: formKey,
                           child: Column(
@@ -293,9 +292,11 @@ class _LoginPageState extends State<LoginPage> {
                 email: studentEmail, password: password);
         User? user = userCredential.user;
         if (user != null) {
-          Navigator.pushNamedAndRemoveUntil(
+          
+          Navigator.pushNamed(
               context, HomePage.routeName, (route) => false);
         } else {
+          
           showSnackBar(
             'Sign In Failed',
             context,
@@ -303,6 +304,7 @@ class _LoginPageState extends State<LoginPage> {
           );
         }
       } catch (e) {
+        
         showSnackBar(
           '$e',
           context,

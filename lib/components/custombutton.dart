@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studyssey/constant.dart';
 
-
 class CustomButton extends StatelessWidget {
   const CustomButton(
       {super.key,
@@ -20,7 +19,6 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushReplacementNamed(context, route!);
         Navigator.pushNamed(context, route!);
       },
       style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
