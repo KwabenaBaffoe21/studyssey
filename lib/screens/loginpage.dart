@@ -173,17 +173,19 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   obscureText: obscureText,
                                   decoration: InputDecoration(
-                                      suffixIcon: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            obscureText = !obscureText;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          obscureText ? Icons.visibility : Icons.visibility_off,
-                                          size: 15.47,
-                                        ),
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          obscureText = !obscureText;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        obscureText
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        size: 15.47,
                                       ),
+                                    ),
                                     label: const Text(
                                       'Password',
                                       style: TextStyle(color: color5),
@@ -293,8 +295,7 @@ class _LoginPageState extends State<LoginPage> {
                 email: studentEmail, password: password);
         User? user = userCredential.user;
         if (user != null) {
-          Navigator.pushNamedAndRemoveUntil(
-              context, HomePage.routeName, (route) => false);
+          Navigator.pushNamed(context, HomePage.routeName);
         } else {
           showSnackBar(
             'Sign In Failed',
