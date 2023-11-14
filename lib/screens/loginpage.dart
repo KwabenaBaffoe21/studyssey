@@ -98,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 43.33, bottom: 35.56),
+                        padding:
+                            const EdgeInsets.only(top: 43.33, bottom: 35.56),
                         child: Form(
                           key: formKey,
                           child: Column(
@@ -108,11 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                                 cursorHeight: 13.33,
                                 keyboardType: TextInputType.emailAddress,
                                 controller: textEditingController,
-                                style: GoogleFonts.manrope(
-                                  fontSize: 13.33,
-                                  fontWeight: FontWeight.w500,
-                                  color: textColor1,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.copyWith(color: textColor1),
                                 validator: (val) {
                                   return RegExp(
                                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -142,8 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(4.44),
-                                    borderSide:
-                                        const BorderSide(color: kErrorBorderColor),
+                                    borderSide: const BorderSide(
+                                        color: kErrorBorderColor),
                                   ),
                                 ),
                               ),
@@ -181,13 +181,13 @@ class _LoginPageState extends State<LoginPage> {
                                           obscureText = false;
                                         });
                                       },
-                                      icon: toggle == false
+                                      icon: toggle != false
                                           ? const Icon(
-                                              Icons.visibility_off,
+                                              Icons.visibility,
                                               size: 15.47,
                                             )
                                           : const Icon(
-                                              Icons.visibility,
+                                              Icons.visibility_off,
                                               size: 15.47,
                                             ),
                                     ),
@@ -199,16 +199,18 @@ class _LoginPageState extends State<LoginPage> {
                                         vertical: 12, horizontal: 28),
                                     enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(4.44),
-                                      borderSide: const BorderSide(color: color1),
+                                      borderSide:
+                                          const BorderSide(color: color1),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(color: color1),
+                                      borderSide:
+                                          const BorderSide(color: color1),
                                       borderRadius: BorderRadius.circular(4.44),
                                     ),
                                     errorBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(4.44),
-                                      borderSide:
-                                          const BorderSide(color: kErrorBorderColor),
+                                      borderSide: const BorderSide(
+                                          color: kErrorBorderColor),
                                     ),
                                   ),
                                 ),
@@ -298,11 +300,9 @@ class _LoginPageState extends State<LoginPage> {
                 email: studentEmail, password: password);
         User? user = userCredential.user;
         if (user != null) {
-          
           Navigator.pushNamedAndRemoveUntil(
               context, HomePage.routeName, (route) => false);
         } else {
-          
           showSnackBar(
             'Sign In Failed',
             context,
@@ -310,7 +310,6 @@ class _LoginPageState extends State<LoginPage> {
           );
         }
       } catch (e) {
-        
         showSnackBar(
           '$e',
           context,

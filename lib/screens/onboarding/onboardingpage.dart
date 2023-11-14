@@ -77,8 +77,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
               child: CustomPageIndicator(controller: controller),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 26.11),
-              child: CustomButton(route: LoginPage.routeName, text: 'Skip'),
+              padding: const EdgeInsets.only(left: 26.11,right: 26.11,bottom: 11),
+              child: CustomButton(route: LoginPage.routeName, text: 'Skip',width: 307.78,height: 44.44,),
             )
           ],
         ),
