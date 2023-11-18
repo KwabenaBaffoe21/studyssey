@@ -110,6 +110,7 @@ const kMoreVert = 'images/icons/more_vert.svg';
 const kDashBoard = 'images/icons/dashboard.svg';
 const kRegister = 'images/icons/register.svg';
 const kResult = 'images/icons/results.svg';
+const kDeliever = 'images/icons/deliever.svg';
 
 //Onboarding Images
 const kOnboardingImage1 = 'images/onboarding_images/Group 27.svg';

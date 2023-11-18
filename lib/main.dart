@@ -24,16 +24,12 @@ void main() async {
     }
   }
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  Future.delayed(
+    const Duration(milliseconds: 100),
+  );
   FlutterNativeSplash.remove();
-  runApp(const Studyssey());
-}
-
-class Studyssey extends StatelessWidget {
-  const Studyssey({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Studyssey',
       themeMode: ThemeMode.system,
@@ -142,21 +138,6 @@ class Studyssey extends StatelessWidget {
           ? OnboardingPage.routeName
           : HomePage.routeName,
       routes: routes,
-      home: const LoadingScreen(),
-
-    );
-  }
-}
-
-class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
-      ),
-    );
-  }
+    ),
+  );
 }

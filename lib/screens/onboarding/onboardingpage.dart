@@ -31,33 +31,33 @@ class _OnboardingPageState extends State<OnboardingPage> {
             flex: 1,
             child: PageView(
               controller: controller,
-              children: const [
+              children:  [
                 BuildPage(
                   title: 'Student-life at GCTU has never been so convenient',
                   imagePath: 'images/onboarding/onboardingImage1.svg',
                   width: 358.08,
-                  height: 318.72,
+                  height: MediaQuery.sizeOf(context).height,
                   vertical: 18.89,
                 ),
                 BuildPage(
                   title: 'Access you study material and SIP all in one place',
                   imagePath: 'images/onboarding/onboardingImage2.svg',
                   width: 324.9,
-                  height: 324.31,
+                  height: 324.31*MediaQuery.of(context).devicePixelRatio,
                   vertical: 18.89,
                 ),
                 BuildPage(
                   title: 'Pay fees and other bills with simple few clicks!',
                   imagePath: 'images/onboarding/onboardingImage3.svg',
                   width: 304.32,
-                  height: 290.88,
+                  height: 290.88*MediaQuery.of(context).devicePixelRatio,
                   vertical: 18.89,
                 ),
                 BuildPage(
                   title: 'Keep up with the times and receive rapid assistance',
                   imagePath: 'images/onboarding/onboardingImage4.svg',
                   width: 357.46,
-                  height: 277.92,
+                  height: 277.92*MediaQuery.of(context).devicePixelRatio,
                   vertical: 37.78,
                 ),
               ],

@@ -439,7 +439,10 @@ class _SResultState extends State<SResult> {
                 shape: Theme.of(context).floatingActionButtonTheme.shape,
                 child: Text(
                   'Print',
-                  style: Theme.of(context).textTheme.labelMedium,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium
+                      ?.copyWith(color: textColor2),
                 ),
               )
             : null);
