@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseAuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -11,7 +12,9 @@ class FirebaseAuthService {
       return userCredential.user;
     } catch (e) {
       
-      print('Invalid User');
+      if (kDebugMode) {
+        print('Invalid User');
+      }
     }
     return null;
   }

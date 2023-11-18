@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:studyssey/utilize/usermodel.dart';
+import 'package:studyssey/utilize/user_model.dart';
 
 class FirebaseProvider extends ChangeNotifier {
   List<UserModel> users = [];

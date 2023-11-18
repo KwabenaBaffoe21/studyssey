@@ -1,92 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:studyssey/constant.dart';
-import '../../../utilize/usermodel.dart';
+import 'package:studyssey/screens/chat/components/chatroom.dart';
+import 'package:studyssey/utilize/build_user.dart';
+import 'package:studyssey/utilize/read_user.dart';
+import 'package:studyssey/utilize/user_model.dart';
 
-class ChatTile extends StatefulWidget {
+class ChatTile extends StatelessWidget {
   const ChatTile({
     super.key,
-    required this.user,
-    required this.route,
-    this.totalMessage,
   });
 
-  final UserModel user;
-  final String? totalMessage;
-  final String route;
-
-  @override
-  State<ChatTile> createState() => _ChatTileState();
-}
-
-class _ChatTileState extends State<ChatTile> {
-  List<Widget>chatDetails = [
-
-  ];
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        Navigator.pushReplacementNamed(context, widget.route);
+    return StreamBuilder<List<UserModel>>(
+      stream: readUser(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else if (snapshot.hasData) {
+          final List<UserModel> users = snapshot.data!;
+
+          return ListView(
+            shrinkWrap: true,
+            children: users
+                .map(
+                  (user) => buildUser(user, context, ChatRoom.routeName),
+                )
+                .toList(),
+          );
+        } else {
+          return const Text('No data available');
+        }
       },
-      leading: CircleAvatar(
-        backgroundColor: Theme.of(context).primaryColor,
-        backgroundImage: NetworkImage(widget.user.profileImage),
-        radius: 39,
-      ),
-      title: Text(
-        widget.user.fullName,
-        style: GoogleFonts.manrope(
-          fontSize: 13.33,
-          fontWeight: FontWeight.w700,
-          color: textColor1,
-        ),
-      ),
-      subtitle: Text(
-        widget.user.content,
-        style: GoogleFonts.manrope(
-          fontWeight: FontWeight.w500,
-          fontSize: 13.33,
-          color: textColor1,
-        ),
-      ),
-      trailing: widget.totalMessage != null
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  widget.user.timeStamp as String,
-                  style: GoogleFonts.manrope(
-                    fontSize: 8.89,
-                    fontWeight: FontWeight.w500,
-                    color: textColor4,
-                  ),
-                ),
-                Badge(
-                  backgroundColor: color1,
-                  smallSize: 21.11,
-                  label: Text(
-                    widget.totalMessage ?? '',
-                    style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 11.11,
-                      color: textColor2,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 7),
-                ),
-              ],
-            )
-          : Text(
-              DateFormat('HH:mm').format(widget.user.timeStamp),
-              style: GoogleFonts.manrope(
-                fontSize: 8.89,
-                fontWeight: FontWeight.w500,
-                color: textColor4,
-              ),
-            ),
     );
   }
 }
