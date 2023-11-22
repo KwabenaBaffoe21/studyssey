@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/drawer_screen.dart';
 import 'package:studyssey/screens/chat/components/chat_tile.dart';
 import 'package:studyssey/screens/chat/components/filter_buttons.dart';
+import 'package:studyssey/services/firebase_provider.dart';
 import '../../constant.dart';
 import '../courses/coursepage.dart';
 import '../homepage/homepage.dart';
@@ -97,7 +99,11 @@ class _ChatListState extends State<ChatList> {
                   ],
                 ),
               ),
-              const ChatTile()
+              Consumer<FirebaseProvider>(
+                  builder: (context, value, child) {
+                    return ListView.separated(itemBuilder: , separatorBuilder: (context,index)=> const Divider(), itemCount: itemCount)
+                  },
+                  )
             ],
           ),
         ),
