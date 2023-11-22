@@ -11,8 +11,9 @@ Stream<List<UserModel>> readUser() => FirebaseFirestore.instance
         // Extract data from the 'chat' collection
         String content = doc['content'];
         String status = doc['status'];
-        DateTime timestamp = doc['timestamp']
-            .toDate(); // Assuming 'timeStamp' is a Firebase Timestamp
+        DateTime timestamp = doc['timestamp']?.toDate() ?? DateTime.now();
+
+        // Assuming 'timeStamp' is a Firebase Timestamp
 
         // Extract studentID from the 'chat' collection
         String studentID = doc['studentID'];
@@ -31,7 +32,7 @@ Stream<List<UserModel>> readUser() => FirebaseFirestore.instance
         String profileImage = studentSnapshot['profileImage'];
 
         // Create UserModel and add it to the list
-        UserModel user = UserModel( 
+        UserModel user = UserModel(
           content: content,
           profileImage: profileImage,
           timestamp: timestamp,
@@ -39,7 +40,7 @@ Stream<List<UserModel>> readUser() => FirebaseFirestore.instance
           middleName: middleName,
           lastName: lastName,
           uid: studentID,
-          fullname: '$firstName $middleName $lastName',
+          fullName: '$firstName $middleName $lastName',
           status: status,
         );
 

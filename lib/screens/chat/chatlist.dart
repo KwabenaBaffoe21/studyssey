@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/drawer_screen.dart';
-import 'package:studyssey/screens/chat/components/chat_tile.dart';
+import 'package:studyssey/screens/chat/chat_tile.dart';
 import 'package:studyssey/screens/chat/components/filter_buttons.dart';
 import 'package:studyssey/services/firebase_provider.dart';
 import '../../constant.dart';
@@ -32,6 +33,12 @@ class _ChatListState extends State<ChatList> {
     const ProfilePage()
   ];
   TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<FirebaseProvider>(context, listen: false).getAllUsers();
+  }
 
   @override
   void dispose() {
@@ -100,10 +107,17 @@ class _ChatListState extends State<ChatList> {
                 ),
               ),
               Consumer<FirebaseProvider>(
-                  builder: (context, value, child) {
-                    return ListView.separated(itemBuilder: , separatorBuilder: (context,index)=> const Divider(), itemCount: itemCount)
-                  },
-                  )
+                builder: (context, value, child) {
+                  return ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => value.users[index].uid !=
+                              FirebaseAuth.instance.currentUser?.uid
+                          ? ChatTile(user: value.users[index])
+                          : null,
+                      separatorBuilder: (context, index) => const Divider(),
+                      itemCount: value.users.length);
+                },
+              )
             ],
           ),
         ),
@@ -112,6 +126,8 @@ class _ChatListState extends State<ChatList> {
           onTap: (index) {
             setState(() {
               currentIndex = index;
+              print('THIS IS THE CURRENT INDEX: $currentIndex');
+              print('THSI IS THE INDEX VALUE: $index');
             });
             Navigator.pushReplacement(
               context,

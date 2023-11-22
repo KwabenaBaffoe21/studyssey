@@ -148,7 +148,7 @@ class _ChatRoomState extends State<ChatRoom> with WidgetsBindingObserver {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            user!.fullname,
+                            user!.fullName,
                             style: GoogleFonts.manrope(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.33,

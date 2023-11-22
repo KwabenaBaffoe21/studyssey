@@ -197,6 +197,8 @@ class _CoursePageState extends State<CoursePage> {
           onTap: (index) {
             setState(() {
               currentIndex = index;
+              print('THIS IS THE CURRENT INDEX: $currentIndex');
+              print('THSI IS THE INDEX VALUE: $index');
             });
             Navigator.pushAndRemoveUntil(
                 context,
