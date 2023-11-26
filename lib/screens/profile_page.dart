@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studyssey/screens/courses/coursepage.dart';
+import 'package:studyssey/screens/courses/course_page.dart';
 import '../../constant.dart';
-import 'chat/chatlist.dart';
-import 'homepage/homepage.dart';
-import 'notificationpage.dart';
+import 'chat/chat_page.dart';
+import 'homepage/home_page.dart';
+import 'notification_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     List<Widget> destinationScreens = [
       const CoursePage(),
-      const ChatList(),
+      ChatPage(),
       const HomePage(),
       const NotificationPage(),
       const ProfilePage()

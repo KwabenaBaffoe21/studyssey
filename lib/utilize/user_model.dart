@@ -1,47 +1,52 @@
+
 class UserModel {
   final String firstName;
-  final String middleName;
   final String lastName;
   final String uid;
-  final String content;
   final DateTime timestamp;
-  final String fullName;
   final String profileImage;
-  final String status;
+  final bool isOnline;
+  final String mobileNumber;
+  final String address;
+  final String studentEmail;
+  final String indexNumber;
 
-  UserModel({
+  const UserModel({
     required this.uid,
     required this.firstName,
-    required this.content,
-    required this.fullName,
     required this.lastName,
-    required this.middleName,
     required this.timestamp,
     required this.profileImage,
-    required this.status,
+    this.isOnline = false,
+    required this.mobileNumber,
+    required this.address,
+    required this.studentEmail,
+    required this.indexNumber,
   });
 
   Map<String, dynamic> toJson() => {
         'uid': uid,
         'firstName': firstName,
-        'middleName': middleName,
         'lastName': lastName,
-        'fullName': fullName,
-        'content': content,
-        'timeStamp': timestamp,
+        'timestamp': timestamp,
         'profileImage': profileImage,
-        'status': status,
+        'isOnline': isOnline,
+        'mobileNumber': mobileNumber,
+        'address': address,
+        'studentEmail': studentEmail,
+        'indexNumber': indexNumber,
       };
 
-  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         uid: json['uid'] ?? '',
         firstName: json['firstName'] ?? '',
-        content: json['content'] ?? '',
-        fullName: json['fullName'] ?? '',
         lastName: json['lastName'] ?? '',
-        middleName: json['middleName'] ?? '',
-        timestamp: json['timestamp'].toDate,
+        timestamp: json['timestamp'].toDate(),
         profileImage: json['profileImage'] ?? '',
-        status: json['status'] ?? '',
+        mobileNumber: json['mobileNumber'] ?? '',
+        address: json['address'] ?? '',
+        studentEmail: json['studentEmail'] ?? '',
+        indexNumber: json['indexNumber'] ?? '',
+        isOnline: json['isOnline'] ?? false,
       );
 }

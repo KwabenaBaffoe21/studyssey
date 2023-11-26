@@ -4,11 +4,11 @@ import 'package:studyssey/components/drawer_screen.dart';
 import 'package:studyssey/components/custompageindicator.dart';
 import 'package:studyssey/components/slide_show.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
-import 'package:studyssey/screens/chat/chatlist.dart';
-import 'package:studyssey/screens/courses/seemore.dart';
-import 'package:studyssey/screens/homepage/homepage.dart';
-import 'package:studyssey/screens/notificationpage.dart';
-import 'package:studyssey/screens/profilepage.dart';
+import 'package:studyssey/screens/chat/chat_page.dart';
+import 'package:studyssey/screens/courses/see_more.dart';
+import 'package:studyssey/screens/homepage/home_page.dart';
+import 'package:studyssey/screens/notification_page.dart';
+import 'package:studyssey/screens/profile_page.dart';
 import '../../components/customsearchbar.dart';
 import '../../constant.dart';
 
@@ -27,7 +27,7 @@ class _CoursePageState extends State<CoursePage> {
   int currentIndex = 0;
   List<Widget> destinationScreens = [
     const CoursePage(),
-    const ChatList(),
+     ChatPage(),
     const HomePage(),
     const NotificationPage(),
     const ProfilePage()

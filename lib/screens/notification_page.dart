@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/constant.dart';
-import 'package:studyssey/screens/profilepage.dart';
+import 'package:studyssey/screens/profile_page.dart';
 
-import 'chat/chatlist.dart';
-import 'courses/coursepage.dart';
-import 'homepage/homepage.dart';
+import 'chat/chat_page.dart';
+import 'courses/course_page.dart';
+import 'homepage/home_page.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -22,7 +22,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     List<Widget> destinationScreens = [
       const CoursePage(),
-      const ChatList(),
+       ChatPage(),
       const HomePage(),
       const NotificationPage(),
       const ProfilePage()

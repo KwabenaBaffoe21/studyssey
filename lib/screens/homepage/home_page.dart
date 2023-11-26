@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:studyssey/screens/courses/coursepage.dart';
+import 'package:studyssey/screens/courses/course_page.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
-import 'package:studyssey/screens/notificationpage.dart';
+import 'package:studyssey/screens/notification_page.dart';
 import 'package:studyssey/screens/pay_fees/pay_fees.dart';
 import 'package:studyssey/screens/sip/sip.dart';
 import '../../components/drawer_screen.dart';

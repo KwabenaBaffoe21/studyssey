@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/components/custombutton.dart';
 import 'package:studyssey/constant.dart';
-import 'package:studyssey/screens/resetpage/changepassword.dart';
+import 'package:studyssey/screens/resetpage/change_password.dart';
 
 class ResetPage extends StatefulWidget {
   const ResetPage({super.key});

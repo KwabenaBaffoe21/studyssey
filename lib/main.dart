@@ -6,11 +6,10 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:studyssey/routes.dart';
-import 'package:studyssey/screens/homepage/homepage.dart';
-import 'package:studyssey/screens/onboarding/onboardingpage.dart';
+import 'package:studyssey/screens/homepage/home_page.dart';
+import 'package:studyssey/screens/onboarding/onboarding_page.dart';
 import 'package:studyssey/services/firebase_options.dart';
 import 'package:studyssey/services/firebase_provider.dart';
-
 import 'constant.dart';
 
 void main() async {
@@ -51,69 +50,47 @@ class Studyssey extends StatelessWidget {
             elevation: 0,
             foregroundColor: textColor1,
             titleTextStyle: GoogleFonts.manrope(
-                fontSize: 13.33, fontWeight: FontWeight.w500, color: textColor1),
+                fontSize: 13.33,
+                fontWeight: FontWeight.w500,
+                color: textColor1),
             toolbarHeight: 53.92,
             scrolledUnderElevation: 0,
           ),
           useMaterial3: true,
           textTheme: TextTheme(
             titleMedium: GoogleFonts.manrope(
-              fontSize: 13.33,
-              fontWeight: FontWeight.w500,
-            ),
+                fontSize: 13.33, fontWeight: FontWeight.w500),
             titleLarge: GoogleFonts.manrope(
-              fontSize: 24.44,
-              fontWeight: FontWeight.w700,
-            ),
+                fontSize: 24.44, fontWeight: FontWeight.w700),
             titleSmall: GoogleFonts.manrope(
-              fontWeight: FontWeight.w500,
-              fontSize: 11.11,
-            ),
-            bodyLarge: GoogleFonts.manrope(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-            bodyMedium: GoogleFonts.manrope(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
+                fontWeight: FontWeight.w500, fontSize: 11.11),
+            bodyLarge:
+                GoogleFonts.manrope(fontSize: 16, fontWeight: FontWeight.w700),
+            bodyMedium:
+                GoogleFonts.manrope(fontSize: 13, fontWeight: FontWeight.w600),
             bodySmall: GoogleFonts.manrope(
-              fontSize: 13.33,
-              fontWeight: FontWeight.w700,
-            ),
-            displayLarge: GoogleFonts.manrope(
-              fontSize: 36,
-              fontWeight: FontWeight.w500,
-            ),
+                fontSize: 13.33, fontWeight: FontWeight.w700),
+            displayLarge:
+                GoogleFonts.manrope(fontSize: 36, fontWeight: FontWeight.w500),
             displayMedium: GoogleFonts.manrope(
-              fontSize: 22.22,
-              fontWeight: FontWeight.w700,
-            ),
-            displaySmall: GoogleFonts.manrope(
-              fontSize: 9,
-              fontWeight: FontWeight.w500,
-            ),
+                fontSize: 22.22, fontWeight: FontWeight.w700),
+            displaySmall:
+                GoogleFonts.manrope(fontSize: 9, fontWeight: FontWeight.w500),
             labelMedium: GoogleFonts.manrope(
-              fontWeight: FontWeight.w600,
-              fontSize: 14.81,
-            ),
+                fontWeight: FontWeight.w600, fontSize: 14.81),
             labelSmall: GoogleFonts.manrope(
-              fontSize: 6.67,
-              fontWeight: FontWeight.w500,
-            ),
+                fontSize: 6.67, fontWeight: FontWeight.w500),
           ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             elevation: 0,
             backgroundColor: scaffold,
-            selectedItemColor: buttonColor,
-            unselectedItemColor: color5,
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: true,
             showSelectedLabels: true,
-            unselectedLabelStyle:
-                GoogleFonts.manrope(fontSize: 6.67, fontWeight: FontWeight.w500),
-            selectedLabelStyle:
-                GoogleFonts.manrope(fontWeight: FontWeight.w500, fontSize: 6.67),
+            unselectedLabelStyle: GoogleFonts.manrope(
+                fontSize: 6.67, fontWeight: FontWeight.w500),
+            selectedLabelStyle: GoogleFonts.manrope(
+                fontWeight: FontWeight.w500, fontSize: 6.67),
             landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
           ),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -125,7 +102,8 @@ class Studyssey extends StatelessWidget {
             ),
           ),
           drawerTheme: const DrawerThemeData(backgroundColor: kDrawerColor),
-          bottomSheetTheme: const BottomSheetThemeData(backgroundColor: scaffold),
+          bottomSheetTheme:
+              const BottomSheetThemeData(backgroundColor: scaffold),
           scaffoldBackgroundColor: scaffold,
           primaryColor: color1,
           splashColor: splashScreen,
