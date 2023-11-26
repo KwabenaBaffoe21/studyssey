@@ -176,24 +176,11 @@ class _CoursePageState extends State<CoursePage> {
           elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
           landscapeLayout:
               Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
-          showUnselectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
-          showSelectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
-          unselectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-          selectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
           backgroundColor:
               Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           iconSize: 31.89,
           currentIndex: currentIndex,
-          selectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
-          unselectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
           type: Theme.of(context).bottomNavigationBarTheme.type,
-          useLegacyColorScheme: false,
           onTap: (index) {
             setState(() {
               currentIndex = index;
@@ -210,21 +197,21 @@ class _CoursePageState extends State<CoursePage> {
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kCourseIcon),
                 label: 'Courses',
-                activeIcon: SvgPicture.asset(kCourseAltIcon)),
+                ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kSendIcon),
                 label: 'Chat',
-                activeIcon: SvgPicture.asset(kSendAltIcon)),
+                ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kNotificationIcon),
                 label: 'Notification',
-                activeIcon: SvgPicture.asset(kNotificationAltIcon)),
+                ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kProfileIcon),
                 label: 'Profile',
-                activeIcon: SvgPicture.asset(kProfileAltIcon)),
+                ),
           ],
         ),
       ),

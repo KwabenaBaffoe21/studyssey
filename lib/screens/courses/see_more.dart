@@ -3,7 +3,7 @@ import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
 import 'package:studyssey/constant.dart';
 import '../../components/custombackbutton.dart';
-import 'coursepage.dart';
+import 'course_page.dart';
 
 class SeeMore extends StatefulWidget {
   const SeeMore({super.key});

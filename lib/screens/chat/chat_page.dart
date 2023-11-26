@@ -1,18 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/drawer_screen.dart';
-import 'package:studyssey/screens/chat/chat_tile.dart';
 import 'package:studyssey/screens/chat/components/filter_buttons.dart';
 import 'package:studyssey/services/firebase_provider.dart';
 import '../../constant.dart';
-import '../courses/coursepage.dart';
-import '../homepage/homepage.dart';
-import '../notificationpage.dart';
-import '../profilepage.dart';
+import '../courses/course_page.dart';
+import '../homepage/home_page.dart';
+import '../notification_page.dart';
+import '../profile_page.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
@@ -106,18 +104,7 @@ class _ChatListState extends State<ChatList> {
                   ],
                 ),
               ),
-              Consumer<FirebaseProvider>(
-                builder: (context, value, child) {
-                  return ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => value.users[index].uid !=
-                              FirebaseAuth.instance.currentUser?.uid
-                          ? ChatTile(user: value.users[index])
-                          : null,
-                      separatorBuilder: (context, index) => const Divider(),
-                      itemCount: value.users.length);
-                },
-              )
+
             ],
           ),
         ),
@@ -126,68 +113,49 @@ class _ChatListState extends State<ChatList> {
           onTap: (index) {
             setState(() {
               currentIndex = index;
-              print('THIS IS THE CURRENT INDEX: $currentIndex');
-              print('THSI IS THE INDEX VALUE: $index');
+              if (kDebugMode) {
+                print('THIS IS THE CURRENT INDEX: $currentIndex');
+              }
+              if (kDebugMode) {
+                print('THIS IS THE INDEX VALUE: $index');
+              }
             });
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (context) => destinationScreens[index]),
+                builder: (context) => destinationScreens[index],
+              ),
             );
           },
           currentIndex: currentIndex,
-          type: BottomNavigationBarType.fixed,
+          type: Theme.of(context).bottomNavigationBarTheme.type,
+          showUnselectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
+          showSelectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
+          selectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+          unselectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+          selectedLabelStyle:
+              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
           unselectedLabelStyle:
-              GoogleFonts.manrope(fontWeight: FontWeight.w500, fontSize: 6.67),
-          selectedLabelStyle: GoogleFonts.manrope(
-              fontWeight: FontWeight.w500, fontSize: 6.67, color: buttonColor),
-          selectedItemColor: buttonColor,
+              Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
           iconSize: 31.89,
-          elevation: 5,
-          backgroundColor: textColor2,
+          elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
+          backgroundColor:
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           items: [
             BottomNavigationBarItem(
-              icon: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                    currentIndex == 0 ? buttonColor : color5, BlendMode.srcIn),
-                child: SvgPicture.asset(
-                  kCourseIcon,
-                  theme: SvgTheme(
-                      currentColor: currentIndex == 0 ? buttonColor : color5),
-                ),
-              ),
-              label: 'Dashboard',
-              activeIcon: SvgPicture.asset(kCourseAltIcon),
-            ),
+                icon: SvgPicture.asset(kCourseIcon), label: 'Dashboard'),
             BottomNavigationBarItem(
-              icon: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                    currentIndex == 1 ? buttonColor : color5, BlendMode.srcIn),
-                child: SvgPicture.asset(kSendIcon),
-              ),
-              label: 'Register',
-              activeIcon: SvgPicture.asset(kSendAltIcon),
-            ),
+                icon: SvgPicture.asset(kSendIcon), label: 'Register'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
             BottomNavigationBarItem(
-              icon: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                    currentIndex == 3 ? buttonColor : color5, BlendMode.srcIn),
-                child: SvgPicture.asset(kNotificationIcon),
-              ),
-              label: 'Result',
-              activeIcon: SvgPicture.asset(kNotificationAltIcon),
-            ),
+                icon: SvgPicture.asset(kNotificationIcon), label: 'Result'),
             BottomNavigationBarItem(
-              icon: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                    currentIndex == 4 ? buttonColor : color5, BlendMode.srcIn),
-                child: SvgPicture.asset(kProfileIcon),
-              ),
-              label: 'Profile',
-              activeIcon: SvgPicture.asset(kProfileAltIcon),
-            )
+                icon: SvgPicture.asset(kProfileIcon), label: 'Profile'),
           ]),
     );
   }
