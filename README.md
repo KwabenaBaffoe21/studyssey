@@ -1,6 +1,6 @@
-# Studyssey Flutter Project
+# Studyssey Project
 
-Welcome to the Studyssey Flutter project! This repository contains the source code and related files for a mobile application developed using Flutter. Studyssey is a versatile student companion designed to enhance the learning experience and streamline various academic tasks.
+Welcome to the Studyssey project! This repository contains the source code and related files for a mobile application developed using Flutter. Studyssey is a versatile student companion designed to enhance the learning experience and streamline various academic tasks.
 
 ## Table of Contents
 
@@ -48,13 +48,13 @@ Before you begin, ensure that you have the following installed on your system:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/studyssey-flutter.git
+   git clone https://github.com/KwabenaBaffoe21/studyssey.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd studyssey-flutter
+   cd studyssey
    ```
 
 3. Install dependencies:
@@ -86,4 +86,4 @@ We welcome contributions! If you would like to contribute to the project, please
 
 This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for your educational or personal projects.
 
-Happy studying with Studyssey! If you encounter any issues or have suggestions for improvements, please open an [issue](https://github.com/KwabenaBaffoe21/studyssey-flutter/issues).
+Happy studying with Studyssey! If you encounter any issues or have suggestions for improvements, please open an [issue](https://github.com/KwabenaBaffoe21/studyssey/issues).
