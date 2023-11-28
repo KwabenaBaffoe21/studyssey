@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:studyssey/screens/chat/components/chatroom.dart';
-import 'package:studyssey/screens/courses/seemore.dart';
+import 'package:studyssey/screens/courses/see_more.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/pay_fees/pay_fees.dart';
 import 'package:studyssey/screens/print_registration_page.dart';
-import 'package:studyssey/screens/resetpage/changepassword.dart';
-import 'package:studyssey/screens/courses/coursepage.dart';
-import 'package:studyssey/screens/homepage/homepage.dart';
-import 'package:studyssey/screens/loginpage.dart';
-import 'package:studyssey/screens/notificationpage.dart';
-import 'package:studyssey/screens/onboarding/onboardingpage.dart';
-import 'package:studyssey/screens/resetpage/resetpage.dart';
+import 'package:studyssey/screens/resetpage/change_password.dart';
+import 'package:studyssey/screens/courses/course_page.dart';
+import 'package:studyssey/screens/homepage/home_page.dart';
+import 'package:studyssey/screens/login_page.dart';
+import 'package:studyssey/screens/notification_page.dart';
+import 'package:studyssey/screens/onboarding/onboarding_page.dart';
+import 'package:studyssey/screens/resetpage/reset_page.dart';
 import 'package:studyssey/screens/sip/sip.dart';
+
+
 
 Map<String, WidgetBuilder> routes = {
   OnboardingPage.routeName: (context) => const OnboardingPage(),
@@ -26,6 +27,4 @@ Map<String, WidgetBuilder> routes = {
   NewsGCTU.routeName: (context) => const NewsGCTU(),
   PayFees.routeName: (context) => const PayFees(),
   PrintRegistrationPage.routeName: (context) => const PrintRegistrationPage(),
-  ChatRoom.routeName: (context) => const ChatRoom(),
 };
-

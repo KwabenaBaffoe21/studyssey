@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:studyssey/screens/onboarding/buildpage.dart';
+import 'package:studyssey/screens/onboarding/build_page.dart';
 import 'package:studyssey/components/custombutton.dart';
-import 'package:studyssey/screens/loginpage.dart';
+import 'package:studyssey/screens/login_page.dart';
 import 'package:studyssey/components/custompageindicator.dart';
 
 class OnboardingPage extends StatefulWidget {

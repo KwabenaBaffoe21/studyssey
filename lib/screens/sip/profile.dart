@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/screens/sip/register.dart';
 import 'package:studyssey/screens/sip/result/result.dart';
 import 'package:studyssey/screens/sip/sip.dart';
-import 'package:studyssey/screens/sip/component/readonlytextfield.dart';
+import 'package:studyssey/screens/sip/component/read_only_text_field.dart';
 import '../../constant.dart';
-import '../homepage/homepage.dart';
+import '../homepage/home_page.dart';
 
 class SProfile extends StatefulWidget {
   const SProfile({super.key});
@@ -169,26 +169,16 @@ class _SProfileState extends State<SProfile> {
         elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
         landscapeLayout:
             Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
-        showUnselectedLabels:
-            Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
-        showSelectedLabels:
-            Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
-        unselectedItemColor:
-            Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-        selectedItemColor:
-            Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
         backgroundColor:
             Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         iconSize: 31.89,
         currentIndex: currentIndex,
-        selectedLabelStyle:
-            Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
-        unselectedLabelStyle:
-            Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
         type: Theme.of(context).bottomNavigationBarTheme.type,
         onTap: (index) {
           setState(() {
             currentIndex = index;
+            print('THIS IS THE CURRENT INDEX: $currentIndex');
+            print('THIS IS THE VALUE INDEX: $index');
           });
           Navigator.pushAndRemoveUntil(
               context,

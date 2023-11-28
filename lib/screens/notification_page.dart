@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/constant.dart';
+import 'package:studyssey/screens/profile_page.dart';
+
+import 'chat/chat_page.dart';
+import 'courses/course_page.dart';
+import 'homepage/home_page.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -15,6 +20,14 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
+    List<Widget> destinationScreens = [
+      const CoursePage(),
+       const ChatPage(),
+      const HomePage(),
+      const NotificationPage(),
+      const ProfilePage()
+    ];
+    int currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 53,
@@ -69,6 +82,48 @@ class _NotificationPageState extends State<NotificationPage> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
+        landscapeLayout:
+            Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
+        backgroundColor:
+            Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        iconSize: 31.89,
+        currentIndex: currentIndex,
+        type: Theme.of(context).bottomNavigationBarTheme.type,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+            print('THIS IS THE CURRENT INDEX: $currentIndex');
+            print('THIS IS THE INDEX VALUE: $index');
+          });
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => destinationScreens[index]),
+              (route) => true);
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kCourseIcon),
+            label: 'Courses',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kSendIcon),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kNotificationIcon),
+            label: 'Notification',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kProfileIcon),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }

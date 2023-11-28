@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constant.dart';
-import '../screens/loginpage.dart';
+import '../screens/login_page.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({
