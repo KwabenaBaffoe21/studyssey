@@ -4,12 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:studyssey/screens/sip/profile.dart';
 import 'package:studyssey/screens/sip/register.dart';
-import 'package:studyssey/screens/sip/result/component/customdatatabel.dart';
+import 'package:studyssey/screens/sip/result/component/custom_data_tabel.dart';
 import 'package:studyssey/screens/sip/sip.dart';
 import 'dart:ui' as ui;
 import '../../../constant.dart';
 import 'resultlist.dart';
-import '../../homepage/homepage.dart';
+import '../../homepage/home_page.dart';
 
 class SResult extends StatefulWidget {
   const SResult({super.key});
@@ -24,6 +24,7 @@ class _SResultState extends State<SResult> {
 
   @override
   Widget build(BuildContext context) {
+    bool isSelected = false;
     List<Widget> destinationScreens = [
       const SIPortal(),
       const SRegister(),
@@ -386,27 +387,25 @@ class _SResultState extends State<SResult> {
           elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
           landscapeLayout:
               Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
-          showUnselectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
-          showSelectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
-          unselectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-          selectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
           backgroundColor:
               Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+          showSelectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
+          showUnselectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
+          selectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+          unselectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
           iconSize: 31.89,
-          currentIndex: currentIndex,
-          selectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
-          unselectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
+          currentIndex: 3,
           type: Theme.of(context).bottomNavigationBarTheme.type,
-          useLegacyColorScheme: false,
           onTap: (index) {
             setState(() {
+              isSelected != isSelected;
               currentIndex = index;
+              print('THIS IS THE CURRENT INDEX: $currentIndex');
+              print('THIS IS THE VALUE INDEX: $index');
             });
             Navigator.pushAndRemoveUntil(
                 context,
@@ -421,8 +420,8 @@ class _SResultState extends State<SResult> {
                 icon: SvgPicture.asset(kRegister), label: 'Register'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(kResult), label: 'Result'),
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.file_present), label: 'Result'),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kProfileIcon), label: 'Profile'),
           ],

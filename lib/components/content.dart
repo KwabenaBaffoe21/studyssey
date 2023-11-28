@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/constant.dart';
 
 class Content extends StatefulWidget {
-  const Content({super.key, required this.title, required this.imagePath});
+  const Content({super.key, required this.title, required this.imagePath, required this.routeName});
 
-  final String imagePath, title;
+  final String imagePath, title,routeName;
 
   @override
   State<Content> createState() => _ContentState();
@@ -16,7 +16,7 @@ class _ContentState extends State<Content> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){},
+      onTap: (){Navigator.pushNamed(context, widget.routeName);},
       leading: SvgPicture.asset(
         widget.imagePath,
         height: 20.17,

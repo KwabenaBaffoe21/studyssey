@@ -3,24 +3,38 @@ import 'package:flutter_svg/svg.dart';
 
 import '../constant.dart';
 
-class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({
+// ignore: must_be_immutable
+class CustomSearchBar extends StatefulWidget {
+  CustomSearchBar({
     super.key,
     required this.textEditingController,
     this.imagePath,
     required this.title,
     this.color,
+    required this.searchName,
   });
 
   final TextEditingController textEditingController;
   final String title;
   final Color? color;
   final String? imagePath;
+  // ignore: prefer_typing_uninitialized_variables
+  var searchName;
 
   @override
-  Widget build(BuildContext context) {
+  State<CustomSearchBar> createState() => _CustomSearchBarState();
+}
+
+class _CustomSearchBarState extends State<CustomSearchBar> {
+  @override
+  Widget build(context) {
     return TextField(
-      controller: textEditingController,
+      onChanged: (value) {
+        setState(() {
+          widget.searchName = value;
+        });
+      },
+      controller: widget.textEditingController,
       cursorHeight: 13.33,
       cursorColor: Theme.of(context).primaryColor,
       keyboardType: TextInputType.text,
@@ -30,13 +44,13 @@ class CustomSearchBar extends StatelessWidget {
         prefixIcon: Padding(
           padding: const EdgeInsets.only(left: 28, right: 7),
           child: SvgPicture.asset(
-            imagePath!,
+            widget.imagePath!,
             width: 11.6,
             height: 11.6,
             theme: const SvgTheme(currentColor: color6),
           ),
         ),
-        hintText: title,
+        hintText: widget.title,
         hintStyle:
             Theme.of(context).textTheme.displaySmall?.copyWith(color: color5),
         border: OutlineInputBorder(
@@ -44,7 +58,7 @@ class CustomSearchBar extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         filled: true,
-        fillColor: color,
+        fillColor: widget.color,
         contentPadding: const EdgeInsets.symmetric(vertical: 12),
       ),
     );

@@ -5,10 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/components/showsnackbar.dart';
 import 'package:studyssey/constant.dart';
-import 'package:studyssey/screens/resetpage/resetpage.dart';
+import 'package:studyssey/screens/resetpage/reset_page.dart';
 import 'package:studyssey/services/firebase_auth.dart';
 
-import 'homepage/homepage.dart';
+import 'homepage/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

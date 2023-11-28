@@ -1,45 +1,52 @@
+
 class UserModel {
   final String firstName;
-  final String middleName;
   final String lastName;
   final String uid;
-  final String content;
   final DateTime timestamp;
-  final String fullname;
   final String profileImage;
-  final String status;
+  final bool isOnline;
+  final String mobileNumber;
+  final String address;
+  final String studentEmail;
+  final String indexNumber;
 
-  UserModel(
-      {required this.uid,
-      required this.firstName,
-      required this.content,
-      required this.fullname,
-      required this.lastName,
-      required this.middleName,
-      required this.timestamp,
-      required this.profileImage,required this.status,});
+  const UserModel({
+    required this.uid,
+    required this.firstName,
+    required this.lastName,
+    required this.timestamp,
+    required this.profileImage,
+    this.isOnline = false,
+    required this.mobileNumber,
+    required this.address,
+    required this.studentEmail,
+    required this.indexNumber,
+  });
 
   Map<String, dynamic> toJson() => {
         'uid': uid,
         'firstName': firstName,
-        'middleName': middleName,
         'lastName': lastName,
-        'fullName': fullname,
-        'content': content,
-        'timeStamp': timestamp,
+        'timestamp': timestamp,
         'profileImage': profileImage,
-        'status': status,
+        'isOnline': isOnline,
+        'mobileNumber': mobileNumber,
+        'address': address,
+        'studentEmail': studentEmail,
+        'indexNumber': indexNumber,
       };
 
-  static UserModel fromJson(Map<String, dynamic> json) => UserModel(
-        uid: json['uid'],
-        firstName: json['firstName'],
-        content: json['content'],
-        fullname: json['fullname'],
-        lastName: json['lastName'],
-        middleName: json['middleName'],
-        timestamp: json['timestamp'],
-        profileImage: json['profileImage'],
-        status: json['status'],
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        uid: json['uid'] ?? '',
+        firstName: json['firstName'] ?? '',
+        lastName: json['lastName'] ?? '',
+        timestamp: json['timestamp'].toDate(),
+        profileImage: json['profileImage'] ?? '',
+        mobileNumber: json['mobileNumber'] ?? '',
+        address: json['address'] ?? '',
+        studentEmail: json['studentEmail'] ?? '',
+        indexNumber: json['indexNumber'] ?? '',
+        isOnline: json['isOnline'] ?? false,
       );
 }

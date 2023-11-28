@@ -4,11 +4,11 @@ import 'package:studyssey/components/drawer_screen.dart';
 import 'package:studyssey/components/custompageindicator.dart';
 import 'package:studyssey/components/slide_show.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
-import 'package:studyssey/screens/chat/chatlist.dart';
-import 'package:studyssey/screens/courses/seemore.dart';
-import 'package:studyssey/screens/homepage/homepage.dart';
-import 'package:studyssey/screens/notificationpage.dart';
-import 'package:studyssey/screens/profilepage.dart';
+import 'package:studyssey/screens/chat/chat_page.dart';
+import 'package:studyssey/screens/courses/see_more.dart';
+import 'package:studyssey/screens/homepage/home_page.dart';
+import 'package:studyssey/screens/notification_page.dart';
+import 'package:studyssey/screens/profile_page.dart';
 import '../../components/customsearchbar.dart';
 import '../../constant.dart';
 
@@ -24,10 +24,11 @@ class CoursePage extends StatefulWidget {
 class _CoursePageState extends State<CoursePage> {
   TextEditingController textEditingController = TextEditingController();
   PageController pageController = PageController();
+  var searchName = "";
   int currentIndex = 0;
   List<Widget> destinationScreens = [
     const CoursePage(),
-    const ChatList(),
+    const ChatPage(),
     const HomePage(),
     const NotificationPage(),
     const ProfilePage()
@@ -67,6 +68,7 @@ class _CoursePageState extends State<CoursePage> {
                   textEditingController: textEditingController,
                   imagePath: kSearchIcon,
                   title: 'Search',
+                  searchName: searchName,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 11),
@@ -176,27 +178,16 @@ class _CoursePageState extends State<CoursePage> {
           elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
           landscapeLayout:
               Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
-          showUnselectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
-          showSelectedLabels:
-              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
-          unselectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-          selectedItemColor:
-              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
           backgroundColor:
               Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           iconSize: 31.89,
           currentIndex: currentIndex,
-          selectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
-          unselectedLabelStyle:
-              Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
           type: Theme.of(context).bottomNavigationBarTheme.type,
-          useLegacyColorScheme: false,
           onTap: (index) {
             setState(() {
               currentIndex = index;
+              print('THIS IS THE CURRENT INDEX: $currentIndex');
+              print('THSI IS THE INDEX VALUE: $index');
             });
             Navigator.pushAndRemoveUntil(
                 context,
@@ -206,23 +197,23 @@ class _CoursePageState extends State<CoursePage> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kCourseIcon),
-                label: 'Courses',
-                activeIcon: SvgPicture.asset(kCourseAltIcon)),
+              icon: SvgPicture.asset(kCourseIcon),
+              label: 'Courses',
+            ),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kSendIcon),
-                label: 'Chat',
-                activeIcon: SvgPicture.asset(kSendAltIcon)),
+              icon: SvgPicture.asset(kSendIcon),
+              label: 'Chat',
+            ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kNotificationIcon),
-                label: 'Notification',
-                activeIcon: SvgPicture.asset(kNotificationAltIcon)),
+              icon: SvgPicture.asset(kNotificationIcon),
+              label: 'Notification',
+            ),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kProfileIcon),
-                label: 'Profile',
-                activeIcon: SvgPicture.asset(kProfileAltIcon)),
+              icon: SvgPicture.asset(kProfileIcon),
+              label: 'Profile',
+            ),
           ],
         ),
       ),

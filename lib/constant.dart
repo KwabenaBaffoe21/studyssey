@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:studyssey/screens/courses/course_page.dart';
+import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
+import 'package:studyssey/screens/pay_fees/pay_fees.dart';
+import 'package:studyssey/screens/sip/sip.dart';
 import 'components/content.dart';
 
 //Colors
@@ -54,6 +58,8 @@ const color10 = Color(0xfffad950);
 const color11 = Color(0xff000000);
 const color12 = Color(0xFF9E9E9E);
 const color13 = Color(0xFF755EFC);
+const color14 = Color(0xfff9f8cb);
+const color15 = Color(0xFFD9D9D9);
 
 // Online Badge Color
 const badgeColor = Color(0xff30ba00);
@@ -111,6 +117,7 @@ const kDashBoard = 'images/icons/dashboard.svg';
 const kRegister = 'images/icons/register.svg';
 const kResult = 'images/icons/results.svg';
 const kDeliever = 'images/icons/deliever.svg';
+const kGroup = 'images/icons/group.png';
 
 //Onboarding Images
 const kOnboardingImage1 = 'images/onboarding_images/Group 27.svg';
@@ -134,16 +141,48 @@ const kProfileImage2 = 'images/profile/profile2.png';
 
 // Drawer Content
 List<Widget> upperContent = [
-  const Content(title: 'Courses', imagePath: kCourseIcon),
-  const Content(title: 'Get Assistance', imagePath: kGetAssistantIcon),
-  const Content(title: 'GCTU News', imagePath: kGCTUNewsIcon),
-  const Content(title: 'Pay Fees', imagePath: kPayFeesIcon),
-  const Content(title: 'SIP', imagePath: 'images/icons/sio.svg'),
+  Content(
+    title: 'Courses',
+    imagePath: kCourseIcon,
+    routeName: CoursePage.routeName,
+  ),
+  const Content(
+    title: 'Get Assistance',
+    imagePath: kGetAssistantIcon,
+    routeName: '',
+  ),
+  Content(
+    title: 'GCTU News',
+    imagePath: kGCTUNewsIcon,
+    routeName: NewsGCTU.routeName,
+  ),
+  Content(
+    title: 'Pay Fees',
+    imagePath: kPayFeesIcon,
+    routeName: PayFees.routeName,
+  ),
+  Content(
+    title: 'SIP',
+    imagePath: 'images/icons/sio.svg',
+    routeName: SIPortal.routeName,
+  ),
 ];
 List<Widget> lowerContent = [
-  const Content(title: 'Privacy Policy', imagePath: kPrivacyPolicyIcon),
-  const Content(title: 'Terms of Use', imagePath: kTermsAndConditionsIcon),
-  const Content(title: 'About', imagePath: kAboutIcon),
+  const Content(
+    title: 'Privacy Policy',
+    imagePath: kPrivacyPolicyIcon,
+    routeName: '',
+  ),
+  const Content(
+    title: 'Terms of Use',
+    imagePath: kTermsAndConditionsIcon,
+    routeName: '',
+  ),
+  const Content(
+    title: 'About',
+    imagePath: kAboutIcon,
+    routeName: '',
+  ),
 ];
 
 // Homepage
