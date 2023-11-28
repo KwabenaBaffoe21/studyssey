@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     List<Widget> destinationScreens = [
       const CoursePage(),
-      ChatPage(),
+      const ChatPage(),
       const HomePage(),
       const NotificationPage(),
       const ProfilePage()

@@ -26,6 +26,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  var searchName = '';
   final userData = [
     UserModel(
       uid: '3iblquexalP3A2Y4Naqg',
@@ -105,6 +106,7 @@ class _ChatPageState extends State<ChatPage> {
                   title: 'Search',
                   color: color6,
                   imagePath: kSearchIcon,
+                  searchName: searchName,
                 ),
               ),
               const Padding(
@@ -213,7 +215,7 @@ class _ChatPageState extends State<ChatPage> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
-              return  const NewChat();
+              return const NewChat();
             }),
           );
         },

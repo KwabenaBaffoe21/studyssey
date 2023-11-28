@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/constant.dart';
+import 'package:studyssey/screens/chat/chat_group.dart';
 import 'package:studyssey/screens/chat/chat_room.dart';
 import 'package:studyssey/utilize/room_id.dart';
 import 'package:studyssey/utilize/user_model.dart';
@@ -21,6 +22,7 @@ class NewChat extends StatefulWidget {
 
 class _NewChatState extends State<NewChat> {
   final textEditingController = TextEditingController();
+  var searchName = "";
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,30 @@ class _NewChatState extends State<NewChat> {
                 title: 'Search',
                 imagePath: kSearchIcon,
                 color: color6,
+                searchName: searchName,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChatGroup(),
+                  ),
+                );
+              },
+              leading: CircleAvatar(
+                backgroundColor: Theme.of(context).primaryColor,
+                backgroundImage: const AssetImage(kGroup),
+                radius: 25,
+              ),
+              title: Text(
+                'Create a Group',
+                style: GoogleFonts.manrope(
+                  fontSize: 16.66,
+                  fontWeight: FontWeight.normal,
+                  color: textColor1,
+                ),
               ),
             ),
             Padding(
@@ -85,51 +111,101 @@ class _NewChatState extends State<NewChat> {
                     child: const CircularProgressIndicator(),
                   );
                 } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return Center(
-                    child: Text(
-                      'There is nothing to see here',
-                      style: GoogleFonts.manrope(
-                        fontSize: 16.66,
-                        fontWeight: FontWeight.w700,
-                        color: textColor1,
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 220),
+                    child: Center(
+                      child: Text(
+                        'There is nothing to see here',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16.66,
+                          fontWeight: FontWeight.w700,
+                          color: textColor4,
+                        ),
                       ),
                     ),
                   );
                 } else {
+                  // Create a new list to modify
+                  List<DocumentSnapshot> updatedDocs =
+                      List.from(snapshot.data!.docs);
+
+                  int userIndex = -1;
+                  for (int i = 0; i < updatedDocs.length; i++) {
+                    if (updatedDocs[i].id ==
+                        FirebaseAuth.instance.currentUser!.uid) {
+                      userIndex = i;
+                      break;
+                    }
+                  }
+
+                  if (userIndex != -1) {
+                    // Swap the elements in the new list
+                    var temp = updatedDocs.removeAt(userIndex);
+                    updatedDocs.insert(0, temp);
+                  }
+
                   return ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      var docs = snapshot.data!.docs[index];
+                      var docs = updatedDocs[index];
                       return ListTile(
                         onTap: () {
-                          var selectedUser = snapshot.data!.docs[index];
-                          if (selectedUser != null && selectedUser.exists) {
+                          print('HI THERE');
+                          var selectedUser = updatedDocs[index];
+                          print('SELECTED USER IS:');
+                          print(selectedUser);
+                          print('end of selected user');
+                          print('SELECTED USER EXISTS');
+                          print(selectedUser.exists);
+                          if (selectedUser.exists) {
+                            print('everything is true');
                             String currentUserID =
                                 FirebaseAuth.instance.currentUser!.uid;
-                            String otherUserID = selectedUser['uid'] ?? '';
+                            print(currentUserID);
+                            String otherUserID =
+                                selectedUser['uid'] as String? ?? '';
+
+                            print(otherUserID);
                             String roomID =
                                 generateRoomID(currentUserID, otherUserID);
+                            print(roomID);
+                            print('uid: ${selectedUser['uid']}');
+                            print('first Name: ${selectedUser['firstName']}');
+                            print('last Name: ${selectedUser['lastName']}');
+                            print('time Stamp: ${selectedUser['timestamp']}');
+                            print(
+                                'profile Image: ${selectedUser['profileImage']}');
+                            print(
+                                'mobile Number: ${selectedUser['mobileNumber']}');
+                            print('address: ${selectedUser['address']}');
+                            print(
+                                'student Email: ${selectedUser['studentEmail']}');
+                            print(
+                                'index Number: ${selectedUser['indexNumber']}');
+                            print('isOnline: ${selectedUser['isOnline']}');
                             UserModel userModel = UserModel(
                               uid: selectedUser['uid'] ?? '',
                               firstName: selectedUser['firstName'] ?? '',
                               lastName: selectedUser['lastName'] ?? '',
-                              timestamp: selectedUser['timestamp'].toDate(),
+                              timestamp: selectedUser['timestamp']?.toDate() ??
+                                  DateTime.now(),
                               profileImage: selectedUser['profileImage'] ?? '',
                               mobileNumber: selectedUser['mobileNumber'] ?? '',
                               address: selectedUser['address'] ?? '',
-                              studentEmail: selectedUser['studentEmail'] ?? '',
+                              studentEmail:
+                                  selectedUser['studentEmail'] as String? ?? '',
                               indexNumber: selectedUser['indexNumber'] ?? '',
                               isOnline: selectedUser['isOnline'] ?? false,
                             );
-
-                            Navigator.push(
+                            print('This the room Id: $roomID');
+                            print(userModel);
+                            Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ChatRoom(
-                                  user: userModel,
-                                  roomID: roomID,
-                                ),
+                                builder: (context) =>
+                                    ChatRoom(user: userModel, roomID: roomID),
                               ),
+                              (route) => false,
                             );
                           }
                         },
@@ -146,6 +222,16 @@ class _NewChatState extends State<NewChat> {
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
+                        trailing:
+                            (docs.id == FirebaseAuth.instance.currentUser!.uid)
+                                ? Text(
+                                    '(You)',
+                                    style: GoogleFonts.manrope(
+                                        fontSize: 16.66,
+                                        fontWeight: FontWeight.normal,
+                                        color: textColor1),
+                                  )
+                                : null,
                       );
                     },
                     separatorBuilder: (context, index) {
@@ -154,7 +240,7 @@ class _NewChatState extends State<NewChat> {
                         height: 5,
                       );
                     },
-                    itemCount: snapshot.data!.docs.length,
+                    itemCount: updatedDocs.length, // Use the new list
                   );
                 }
               },

@@ -16,6 +16,7 @@ class SeeMore extends StatefulWidget {
 
 class _SeeMoreState extends State<SeeMore> {
   TextEditingController textEditingController = TextEditingController();
+  var searchName = '';
 
   @override
   void dispose() {
@@ -43,9 +44,11 @@ class _SeeMoreState extends State<SeeMore> {
           child: Column(
             children: [
               CustomSearchBar(
-                  textEditingController: textEditingController,
-                  imagePath: kSearchIcon,
-                  title: 'Search'),
+                textEditingController: textEditingController,
+                imagePath: kSearchIcon,
+                title: 'Search',
+                searchName: searchName,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 33.22),
                 child: Column(

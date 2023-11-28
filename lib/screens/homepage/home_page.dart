@@ -11,11 +11,17 @@ import 'home_tile.dart';
 import 'sip_home_tile.dart';
 import '../../constant.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   static String routeName = 'HomePage';
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();

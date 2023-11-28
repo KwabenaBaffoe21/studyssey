@@ -59,6 +59,7 @@ const color11 = Color(0xff000000);
 const color12 = Color(0xFF9E9E9E);
 const color13 = Color(0xFF755EFC);
 const color14 = Color(0xfff9f8cb);
+const color15 = Color(0xFFD9D9D9);
 
 // Online Badge Color
 const badgeColor = Color(0xff30ba00);
@@ -116,6 +117,7 @@ const kDashBoard = 'images/icons/dashboard.svg';
 const kRegister = 'images/icons/register.svg';
 const kResult = 'images/icons/results.svg';
 const kDeliever = 'images/icons/deliever.svg';
+const kGroup = 'images/icons/group.png';
 
 //Onboarding Images
 const kOnboardingImage1 = 'images/onboarding_images/Group 27.svg';

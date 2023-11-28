@@ -24,10 +24,11 @@ class CoursePage extends StatefulWidget {
 class _CoursePageState extends State<CoursePage> {
   TextEditingController textEditingController = TextEditingController();
   PageController pageController = PageController();
+  var searchName = "";
   int currentIndex = 0;
   List<Widget> destinationScreens = [
     const CoursePage(),
-     ChatPage(),
+    const ChatPage(),
     const HomePage(),
     const NotificationPage(),
     const ProfilePage()
@@ -67,6 +68,7 @@ class _CoursePageState extends State<CoursePage> {
                   textEditingController: textEditingController,
                   imagePath: kSearchIcon,
                   title: 'Search',
+                  searchName: searchName,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 11),
@@ -195,23 +197,23 @@ class _CoursePageState extends State<CoursePage> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kCourseIcon),
-                label: 'Courses',
-                ),
+              icon: SvgPicture.asset(kCourseIcon),
+              label: 'Courses',
+            ),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kSendIcon),
-                label: 'Chat',
-                ),
+              icon: SvgPicture.asset(kSendIcon),
+              label: 'Chat',
+            ),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kNotificationIcon),
-                label: 'Notification',
-                ),
+              icon: SvgPicture.asset(kNotificationIcon),
+              label: 'Notification',
+            ),
             BottomNavigationBarItem(
-                icon: SvgPicture.asset(kProfileIcon),
-                label: 'Profile',
-                ),
+              icon: SvgPicture.asset(kProfileIcon),
+              label: 'Profile',
+            ),
           ],
         ),
       ),

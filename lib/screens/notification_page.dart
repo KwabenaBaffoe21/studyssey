@@ -22,7 +22,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     List<Widget> destinationScreens = [
       const CoursePage(),
-       ChatPage(),
+       const ChatPage(),
       const HomePage(),
       const NotificationPage(),
       const ProfilePage()

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:studyssey/screens/chat/chat_page.dart';
 import 'package:studyssey/utilize/user_model.dart';
 
 import '../../constant.dart';
@@ -69,7 +70,12 @@ AppBar customAppBar(context, UserModel user) {
     titleSpacing: 5,
     leading: IconButton(
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChatPage(),
+          ),
+        );
       },
       icon: const Icon(
         Icons.arrow_back,

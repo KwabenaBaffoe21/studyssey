@@ -29,7 +29,7 @@ class MessageBubble extends StatelessWidget {
         ),
         padding: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
-          color: isMe ? color5 : color14,
+          color: isMe ? color15 : color14,
           borderRadius: isMe
               ? const BorderRadius.only(
                   bottomRight: Radius.circular(10),
@@ -53,7 +53,7 @@ class MessageBubble extends StatelessWidget {
               style: GoogleFonts.manrope(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: isMe ? textColor2 : textColor1,
+                color: textColor1,
               ),
               softWrap: true,
             ),
@@ -62,7 +62,7 @@ class MessageBubble extends StatelessWidget {
               style: GoogleFonts.manrope(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
-                color: isMe ? textColor2 : textColor1,
+                color: textColor1,
               ),
               textAlign: ui.TextAlign.right,
             )
