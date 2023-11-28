@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:studyssey/screens/GetAssistance/getassistance.dart';
+import 'package:studyssey/screens/chat/components/chatroom.dart';
 import 'package:studyssey/screens/courses/seemore.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/pay_fees/pay_fees.dart';
+import 'package:studyssey/screens/print_registration_page.dart';
 import 'package:studyssey/screens/resetpage/changepassword.dart';
 import 'package:studyssey/screens/courses/coursepage.dart';
 import 'package:studyssey/screens/homepage/homepage.dart';
@@ -24,5 +25,7 @@ Map<String, WidgetBuilder> routes = {
   SIPortal.routeName: (context) => const SIPortal(),
   NewsGCTU.routeName: (context) => const NewsGCTU(),
   PayFees.routeName: (context) => const PayFees(),
-  GetAssistance.routeName: (context) =>  const GetAssistance(),
+  PrintRegistrationPage.routeName: (context) => const PrintRegistrationPage(),
+  ChatRoom.routeName: (context) => const ChatRoom(),
 };
+

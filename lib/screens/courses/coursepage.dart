@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/components/drawer_screen.dart';
 import 'package:studyssey/components/custompageindicator.dart';
 import 'package:studyssey/components/slide_show.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
-import 'package:studyssey/screens/chat/chatpage.dart';
+import 'package:studyssey/screens/chat/chatlist.dart';
 import 'package:studyssey/screens/courses/seemore.dart';
 import 'package:studyssey/screens/homepage/homepage.dart';
 import 'package:studyssey/screens/notificationpage.dart';
@@ -28,7 +27,7 @@ class _CoursePageState extends State<CoursePage> {
   int currentIndex = 0;
   List<Widget> destinationScreens = [
     const CoursePage(),
-    const ChatPage(),
+    const ChatList(),
     const HomePage(),
     const NotificationPage(),
     const ProfilePage()
@@ -60,7 +59,8 @@ class _CoursePageState extends State<CoursePage> {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 25.56, vertical: 11),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 25.56, vertical: 11),
             child: Column(
               children: [
                 CustomSearchBar(
@@ -173,76 +173,58 @@ class _CoursePageState extends State<CoursePage> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-              Navigator.pushReplacement(
+          elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
+          landscapeLayout:
+              Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
+          showUnselectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showUnselectedLabels,
+          showSelectedLabels:
+              Theme.of(context).bottomNavigationBarTheme.showSelectedLabels,
+          unselectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
+          selectedItemColor:
+              Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+          backgroundColor:
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+          iconSize: 31.89,
+          currentIndex: currentIndex,
+          selectedLabelStyle:
+              Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
+          unselectedLabelStyle:
+              Theme.of(context).bottomNavigationBarTheme.unselectedLabelStyle,
+          type: Theme.of(context).bottomNavigationBarTheme.type,
+          useLegacyColorScheme: false,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+            Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                     builder: (context) => destinationScreens[index]),
-              );
-            },
-            currentIndex: currentIndex,
-            type: BottomNavigationBarType.fixed,
-            unselectedLabelStyle: GoogleFonts.manrope(
-                fontWeight: FontWeight.w500, fontSize: 6.67),
-            selectedLabelStyle: GoogleFonts.manrope(
-                fontWeight: FontWeight.w500,
-                fontSize: 6.67,
-                color: buttonColor),
-            selectedItemColor: buttonColor,
-            iconSize: 31.89,
-            elevation: 5,
-            backgroundColor: textColor2,
-            items: [
-              BottomNavigationBarItem(
-                icon: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      currentIndex == 0 ? buttonColor : color5,
-                      BlendMode.srcIn),
-                  child: SvgPicture.asset(
-                    kCourseIcon,
-                    theme: SvgTheme(
-                        currentColor: currentIndex == 0 ? buttonColor : color5),
-                  ),
-                ),
-                label: 'Dashboard',
-                activeIcon: SvgPicture.asset(kCourseAltIcon),
-              ),
-              BottomNavigationBarItem(
-                icon: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      currentIndex == 1 ? buttonColor : color5,
-                      BlendMode.srcIn),
-                  child: SvgPicture.asset(kSendIcon),
-                ),
-                label: 'Register',
-                activeIcon: SvgPicture.asset(kSendAltIcon),
-              ),
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
-              BottomNavigationBarItem(
-                icon: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      currentIndex == 3 ? buttonColor : color5,
-                      BlendMode.srcIn),
-                  child: SvgPicture.asset(kNotificationIcon),
-                ),
-                label: 'Result',
-                activeIcon: SvgPicture.asset(kNotificationAltIcon),
-              ),
-              BottomNavigationBarItem(
-                icon: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      currentIndex == 4 ? buttonColor : color5,
-                      BlendMode.srcIn),
-                  child: SvgPicture.asset(kProfileIcon),
-                ),
+                (route) => true);
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset(kCourseIcon),
+                label: 'Courses',
+                activeIcon: SvgPicture.asset(kCourseAltIcon)),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset(kSendIcon),
+                label: 'Chat',
+                activeIcon: SvgPicture.asset(kSendAltIcon)),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset(kNotificationIcon),
+                label: 'Notification',
+                activeIcon: SvgPicture.asset(kNotificationAltIcon)),
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset(kProfileIcon),
                 label: 'Profile',
-                activeIcon: SvgPicture.asset(kProfileAltIcon),
-              )
-            ]),
+                activeIcon: SvgPicture.asset(kProfileAltIcon)),
+          ],
+        ),
       ),
     );
   }

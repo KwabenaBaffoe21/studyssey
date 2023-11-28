@@ -45,6 +45,7 @@ class _BuildPageState extends State<BuildPage> {
                       widget.title,
                       style: Theme.of(context).textTheme.titleLarge,
                       softWrap: true,
+
                     ),
                   ),
                 ),

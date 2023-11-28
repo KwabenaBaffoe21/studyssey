@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../constant.dart';
+import 'package:studyssey/constant.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, this.route, required this.text, this.height, this.width, this.alignmentGeometry});
+      {super.key,
+      this.route,
+      required this.text,
+      this.height,
+      this.width,
+      this.alignmentGeometry});
 
   final String text;
   final String? route;
@@ -15,7 +19,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushReplacementNamed(context, route!);
+        Navigator.pushNamed(context, route!);
       },
       style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
             fixedSize: MaterialStatePropertyAll(
@@ -25,7 +29,10 @@ class CustomButton extends StatelessWidget {
           ),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.labelMedium?.copyWith(color: textColor2),
+        style: Theme.of(context)
+            .textTheme
+            .labelMedium
+            ?.copyWith(color: textColor2),
       ),
     );
   }

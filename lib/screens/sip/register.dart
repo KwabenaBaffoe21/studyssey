@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:studyssey/constant.dart';
+import 'package:studyssey/screens/print_registration_page.dart';
 import 'package:studyssey/screens/sip/profile.dart';
 import 'package:studyssey/screens/sip/result/result.dart';
 import 'package:studyssey/screens/sip/sip.dart';
@@ -353,7 +355,7 @@ class _SRegisterState extends State<SRegister> {
                           ),
                           children: [
                             TextSpan(
-                              text: ' \u2610 \u2192 Course\n',
+                              text: ' \u2611 \u2192 Course\n',
                               style: GoogleFonts.manrope(
                                 color: const Color(0xfff00000),
                               ),
@@ -367,7 +369,7 @@ class _SRegisterState extends State<SRegister> {
                             ),
                             TextSpan(
                               text:
-                                  'registration, \u2610 \u2192 Registration closed\n',
+                                  'registration, \u2612 \u2192 Registration closed\n',
                               style: GoogleFonts.manrope(
                                 color: const Color(0xfff00000),
                               ),
@@ -386,7 +388,9 @@ class _SRegisterState extends State<SRegister> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
-                        columnSpacing: 30,
+                        columnSpacing: 25,
+                        dataRowMaxHeight: 50,
+                        horizontalMargin: 15,
                         columns: [
                           const DataColumn(
                             numeric: true,
@@ -411,16 +415,15 @@ class _SRegisterState extends State<SRegister> {
                             ),
                           ),
                           DataColumn(
-                            label: Text(
-                              'Credit\nHours',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: textColor1),
-                              textAlign: TextAlign.center,
-                            ),
-                            numeric: true,
-                          ),
+                              label: Text(
+                                'Credit\nHours',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(color: textColor1),
+                                textAlign: TextAlign.center,
+                              ),
+                              numeric: true),
                         ],
                         rows: List<DataRow>.generate(
                           creditHours.length,
@@ -431,6 +434,7 @@ class _SRegisterState extends State<SRegister> {
                                   onChanged: (bool? value) {
                                     setState(() {
                                       isChecked[index] = value ?? false;
+                                      isVisible = isChecked.contains(true);
                                     });
                                   }),
                             ),
@@ -462,6 +466,7 @@ class _SRegisterState extends State<SRegister> {
                                     .bodyMedium
                                     ?.copyWith(
                                         color: textColor1, fontSize: 12.34),
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ]),
@@ -576,13 +581,16 @@ class _SRegisterState extends State<SRegister> {
                     Theme.of(context).floatingActionButtonTheme.backgroundColor,
                 foregroundColor:
                     Theme.of(context).floatingActionButtonTheme.foregroundColor,
-                onPressed: () {},
+                onPressed: ()  => Navigator.pushNamed(context, PrintRegistrationPage.routeName),
                 elevation:
                     Theme.of(context).floatingActionButtonTheme.elevation,
                 shape: Theme.of(context).floatingActionButtonTheme.shape,
                 child: Text(
                   'Print',
-                  style: Theme.of(context).textTheme.labelMedium,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium
+                      ?.copyWith(color: textColor2),
                 ),
               )
             : null);

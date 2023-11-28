@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:studyssey/screens/GetAssistance/getassistance.dart';
 import 'package:studyssey/screens/courses/coursepage.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -43,180 +45,182 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: medium),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 14.17, bottom: 12),
-                child: Row(children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall
-                            ?.copyWith(color: color13),
-                      ),
-                      Text(
-                        'Emmanuel',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: textColor1),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 110, bottom: 10),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, NotificationPage.routeName);
-                      },
-                      child: Badge(
-                        padding: const EdgeInsets.only(
-                            top: 3.36, bottom: 2.88, right: 3.14),
-                        backgroundColor: color7,
-                        largeSize: 20,
-                        alignment: Alignment.topRight,
-                        label: SvgPicture.asset(
-                          kBellIcon,
-                          height: 23.05,
-                          width: 23.02,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 14.17, bottom: 12),
+                  child: Row(children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Welcome',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall
+                              ?.copyWith(color: color13),
                         ),
-                        child: const CircleAvatar(
-                          backgroundColor: color8,
-                          backgroundImage: AssetImage(kCurrentProfile),
-                          radius: 30,
+                        Text(
+                          'Emmanuel',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: textColor1),
                         ),
-                      ),
+                      ],
                     ),
-                  )
-                ]),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      cursorColor: Theme.of(context).primaryColor,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: textColor1),
-                      autocorrect: false,
-                      enableSuggestions: false,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        prefixIcon:
-                            const Icon(Icons.search, size: 22, color: color3),
-                        contentPadding:
-                            const EdgeInsets.only(top: 12, bottom: 12, left: 7),
-                        hintText: 'Search Here',
-                        hintStyle: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: color3),
-                        fillColor: color6,
-                        filled: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide.none,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 110, bottom: 10),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, NotificationPage.routeName);
+                        },
+                        child: Badge(
+                          padding: const EdgeInsets.only(
+                              top: 3.36, bottom: 2.88, right: 3.14),
+                          backgroundColor: color7,
+                          largeSize: 20,
+                          alignment: Alignment.topRight,
+                          label: SvgPicture.asset(
+                            kBellIcon,
+                            height: 23.05,
+                            width: 23.02,
+                          ),
+                          child: const CircleAvatar(
+                            backgroundColor: color8,
+                            backgroundImage: AssetImage(kCurrentProfile),
+                            radius: 30,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              // SizedBox(height: small),
-              Padding(
-                padding: const EdgeInsets.only(top: small),
-                child: Row(
+                    )
+                  ]),
+                ),
+                Row(
                   children: [
                     Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: small),
+                      child: TextField(
+                        cursorColor: Theme.of(context).primaryColor,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: textColor1),
+                        autocorrect: false,
+                        enableSuggestions: false,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          prefixIcon:
+                              const Icon(Icons.search, size: 22, color: color3),
+                          contentPadding:
+                              const EdgeInsets.only(top: 12, bottom: 12, left: 7),
+                          hintText: 'Search Here',
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(color: color3),
+                          fillColor: color6,
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // SizedBox(height: small),
+                Padding(
+                  padding: const EdgeInsets.only(top: small),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: small),
+                          child: HomeTile(
+                            title: 'Courses',
+                            imagePath: kHomeTileImage3,
+                            width: 131.11,
+                            height: 153.33,
+                            imageWidth: 119.57,
+                            imageHeight: 86.67,
+                            color: color9,
+                            textColor: textColor2,
+                            route: CoursePage.routeName,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
                         child: HomeTile(
-                          title: 'Courses',
-                          imagePath: kHomeTileImage3,
-                          width: 131.11,
+                          title: 'GCTU News',
+                          imagePath: kHomeTileImage4,
+                          width: 165.56,
                           height: 153.33,
-                          imageWidth: 119.57,
-                          imageHeight: 86.67,
+                          imageWidth: 113.33,
+                          imageHeight: 97.02,
+                          color: color10,
+                          textColor: textColor6,
+                          route: NewsGCTU.routeName,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: small),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: HomeTile(
+                          imageWidth: 102.69,
+                          title: 'Pay Fees',
+                          imagePath: kHomeTileImage2,
+                          width: 172.22,
+                          height: 153.33,
+                          imageHeight: 93.66,
+                          color: color6,
+                          textColor: textColor6,
+                          route: PayFees.routeName,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: small),
+                        child: HomeTile(
+                          title: 'Get\nAssistance',
+                          imagePath: kHomeTileImage1,
+                          width: 124.44,
+                          height: 153.33,
+                          imageWidth: 81.17,
+                          imageHeight: 98.8,
                           color: color9,
                           textColor: textColor2,
                           route: CoursePage.routeName,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: HomeTile(
-                        title: 'GCTU News',
-                        imagePath: kHomeTileImage4,
-                        width: 165.56,
-                        height: 153.33,
-                        imageWidth: 113.33,
-                        imageHeight: 97.02,
-                        color: color10,
-                        textColor: textColor6,
-                        route: NewsGCTU.routeName,
-                      ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: small),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: HomeTile(
-                        imageWidth: 102.69,
-                        title: 'Pay Fees',
-                        imagePath: kHomeTileImage2,
-                        width: 172.22,
-                        height: 153.33,
-                        imageHeight: 93.66,
-                        color: color6,
-                        textColor: textColor6,
-                        route: PayFees.routeName,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: small),
-                      child: HomeTile(
-                        title: 'Get\nAssistance',
-                        imagePath: kHomeTileImage1,
-                        width: 124.44,
-                        height: 153.33,
-                        imageWidth: 81.17,
-                        imageHeight: 98.8,
-                        color: color9,
-                        textColor: textColor2,
-                        route: GetAssistance.routeName,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: small),
-                child: SIPHomeTile(
-                  title: 'SIP',
-                  imagePath: kHomeTileImage5,
-                  width: 308.89,
-                  height: 124.44,
-                  imageWidth: 221.25,
-                  imageHeight: 111.53,
-                  color: color10,
-                  route: SIPortal.routeName,
-                ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: small),
+                  child: SIPHomeTile(
+                    title: 'SIP',
+                    imagePath: kHomeTileImage5,
+                    width: 308.89,
+                    height: 124.44,
+                    imageWidth: 221.25,
+                    imageHeight: 111.53,
+                    color: color10,
+                    route: SIPortal.routeName,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

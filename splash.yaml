@@ -5,6 +5,7 @@ flutter_native_splash:
   android_12:
     color: "#201f68"
     image: images/android/res/mipmap-xxxhdpi/Studyssey_monochrome.png
+    height:
 
     web: false
     ios: false
