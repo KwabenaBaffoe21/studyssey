@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:studyssey/screens/GetAssistance/getassistance.dart';
 import 'package:studyssey/screens/courses/coursepage.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/notificationpage.dart';
@@ -196,7 +197,7 @@ class HomePage extends StatelessWidget {
                         imageHeight: 98.8,
                         color: color9,
                         textColor: textColor2,
-                        route: CoursePage.routeName,
+                        route: GetAssistance.routeName,
                       ),
                     ),
                   ],

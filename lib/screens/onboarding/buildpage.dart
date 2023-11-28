@@ -52,10 +52,10 @@ class _BuildPageState extends State<BuildPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 44.45),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: 394.44,
+              height: 394,
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: widget.vertical),
               child: SvgPicture.asset(

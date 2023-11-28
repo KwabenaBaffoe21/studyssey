@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constant.dart';
+
 class CustomButton extends StatelessWidget {
   const CustomButton(
       {super.key, this.route, required this.text, this.height, this.width, this.alignmentGeometry});
@@ -23,7 +25,7 @@ class CustomButton extends StatelessWidget {
           ),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.labelMedium,
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(color: textColor2),
       ),
     );
   }

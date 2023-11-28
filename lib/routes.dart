@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyssey/screens/GetAssistance/getassistance.dart';
 import 'package:studyssey/screens/courses/seemore.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/pay_fees/pay_fees.dart';
@@ -22,5 +23,6 @@ Map<String, WidgetBuilder> routes = {
   SeeMore.routeName: (context) => const SeeMore(),
   SIPortal.routeName: (context) => const SIPortal(),
   NewsGCTU.routeName: (context) => const NewsGCTU(),
-  PayFees.routeName: (context) => const PayFees()
+  PayFees.routeName: (context) => const PayFees(),
+  GetAssistance.routeName: (context) =>  const GetAssistance(),
 };
