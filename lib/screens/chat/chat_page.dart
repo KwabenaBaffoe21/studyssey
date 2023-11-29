@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/drawer_screen.dart';
-import 'package:studyssey/screens/chat/components/filter_buttons.dart';
+import 'package:studyssey/screens/chat/blank.dart';
+import 'package:studyssey/screens/chat/components/filter_buttons.dart'
+    as filter;
 import 'package:studyssey/services/firebase_provider.dart';
 import 'package:studyssey/utilize/user_model.dart';
 import '../../constant.dart';
@@ -14,7 +16,6 @@ import '../courses/course_page.dart';
 import '../homepage/home_page.dart';
 import '../notification_page.dart';
 import '../profile_page.dart';
-import 'chat_tile.dart';
 import 'new_chat.dart';
 
 class ChatPage extends StatefulWidget {
@@ -116,21 +117,21 @@ class _ChatPageState extends State<ChatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Filter(
+                    filter.Filter(
                       text: 'All',
                       top: -7,
                       bottom: 7,
                       left: -7,
                       right: 15,
                     ),
-                    Filter(
+                    filter.Filter(
                       text: 'Personal',
                       top: -7,
                       bottom: 7,
                       left: -7,
                       right: 10,
                     ),
-                    Filter(
+                    filter.Filter(
                       text: 'Group',
                       top: -7,
                       bottom: 7,
@@ -140,11 +141,46 @@ class _ChatPageState extends State<ChatPage> {
                   ],
                 ),
               ),
-             StreamBuilder<QuerySnapshot>(stream: FirebaseFirestore.instance.collection('room').snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot>snapshot){
-              if(snapshot.connectionState == ConnectionState.done){
-                return 
-              }
-             })
+              StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection('messages')
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (!snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                      print(!snapshot.hasData);
+                      print(snapshot.data!.docs.isEmpty);
+                      return const Blank();
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.done) {
+                      ListView.separated(
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            var data = snapshot.data!.docs[index];
+                            return ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage:
+                                    NetworkImage(data['profileImage']),
+                                backgroundColor: color5,
+                                radius: 25,
+                              ),
+                              title: Text(data[
+                                  '${data['firstName']} ${data['lastName']}']),
+                              titleTextStyle: GoogleFonts.manrope(
+                                fontSize: 16.66,
+                                fontWeight: FontWeight.bold,
+                                color: textButton,
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return const Divider(
+                              height: 5,
+                            );
+                          },
+                          itemCount: snapshot.data!.docs.length);
+                    }
+                    return const CircularProgressIndicator();
+                  })
             ],
           ),
         ),

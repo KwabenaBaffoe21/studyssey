@@ -201,3 +201,31 @@ const xSmall = 10.0;
 //logo
 const kLogo = 'images/logo.svg';
 const kSchoolLogo = 'images/gctu.png';
+
+// GCTU News Images
+const kGCTUNewsImage1 = 'images/gctu_news_images/gctuNewsImages1.jpg';
+const kGCTUNewsImage2 = 'images/gctu_news_images/gctuNewsImages2.jpg';
+const kGCTUNewsImage3 = 'images/gctu_news_images/gctuNewsImages3.jpg';
+const kGCTUNewsImage4 = 'images/gctu_news_images/gctuNewsImages4.jpg';
+const kGCTUNewsImage5 = 'images/gctu_news_images/gctuNewsImages5.jpg';
+const kGCTUNewsImage6 = 'images/gctu_news_images/gctuNewsImages6.jpg';
+const kGCTUNewsImage7 = 'images/gctu_news_images/gctuNewsImages7.jpg';
+const kGCTUNewsImage8 = 'images/gctu_news_images/gctuNewsImages8.jpg';
+const kGCTUNewsImage9 = 'images/gctu_news_images/gctuNewsImages9.jpg';
+const kGCTUNewsImage10 = 'images/gctu_news_images/gctuNewsImages10.jpg';
+const kGCTUNewsImage11 = 'images/gctu_news_images/gctuNewsImages11.jpg';
+const kGCTUNewsImage12 = 'images/gctu_news_images/gctuNewsImages12.jpg';
+const kGCTUNewsImage13 = 'images/gctu_news_images/gctuNewsImages13.jpg';
+const kGCTUNewsImage14 = 'images/gctu_news_images/gctuNewsImages14.jpg';
+const kGCTUNewsImage15 = 'images/gctu_news_images/gctuNewsImages15.jpg';
+const kGCTUNewsImage16 = 'images/gctu_news_images/gctuNewsImages16.jpg';
+const kGCTUNewsImage17 = 'images/gctu_news_images/gctuNewsImages17.jpg';
+const kGCTUNewsImage18 = 'images/gctu_news_images/gctuNewsImages18.jpg';
+const kGCTUNewsImage19 = 'images/gctu_news_images/gctuNewsImages19.jpg';
+const kGCTUNewsImage20 = 'images/gctu_news_images/gctuNewsImages20.jpg';
+const kGCTUNewsImage21 = 'images/gctu_news_images/gctuNewsImages21.jpg';
+const kGCTUNewsImage22 = 'images/gctu_news_images/gctuNewsImages22.jpg';
+const kGCTUNewsImage23 = 'images/gctu_news_images/gctuNewsImages23.jpg';
+const kGCTUNewsImage24 = 'images/gctu_news_images/gctuNewsImages24.jpg';
+const kGCTUNewsImage25 = 'images/gctu_news_images/gctuNewsImages25.jpg';
+const kGCTUNewsImage26 = 'images/gctu_news_images/gctuNewsImages26.jpg';
