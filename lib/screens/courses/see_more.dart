@@ -3,7 +3,7 @@ import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
 import 'package:studyssey/constant.dart';
 import '../../components/custombackbutton.dart';
-import 'coursepage.dart';
+import 'course_page.dart';
 
 class SeeMore extends StatefulWidget {
   const SeeMore({super.key});
@@ -16,6 +16,7 @@ class SeeMore extends StatefulWidget {
 
 class _SeeMoreState extends State<SeeMore> {
   TextEditingController textEditingController = TextEditingController();
+  var searchName = '';
 
   @override
   void dispose() {
@@ -43,9 +44,11 @@ class _SeeMoreState extends State<SeeMore> {
           child: Column(
             children: [
               CustomSearchBar(
-                  textEditingController: textEditingController,
-                  imagePath: kSearchIcon,
-                  title: 'Search'),
+                textEditingController: textEditingController,
+                imagePath: kSearchIcon,
+                title: 'Search',
+                searchName: searchName,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 33.22),
                 child: Column(

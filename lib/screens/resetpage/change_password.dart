@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/components/custombutton.dart';
 import 'package:studyssey/constant.dart';
-import 'package:studyssey/screens/loginpage.dart';
+import 'package:studyssey/screens/login_page.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});

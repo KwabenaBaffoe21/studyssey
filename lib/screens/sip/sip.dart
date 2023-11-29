@@ -4,7 +4,7 @@ import 'package:studyssey/constant.dart';
 import 'package:studyssey/screens/sip/profile.dart';
 import 'package:studyssey/screens/sip/register.dart';
 import 'package:studyssey/screens/sip/result/result.dart';
-import '../homepage/homepage.dart';
+import '../homepage/home_page.dart';
 
 class SIPortal extends StatefulWidget {
   const SIPortal({super.key});
@@ -16,7 +16,7 @@ class SIPortal extends StatefulWidget {
 }
 
 class _SIPortalState extends State<SIPortal> {
-  int _currentIndex = 0;
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +30,10 @@ class _SIPortalState extends State<SIPortal> {
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
       appBar: AppBar(
-        elevation: Theme
-            .of(context)
-            .appBarTheme
-            .elevation,
-        backgroundColor: Theme
-            .of(context)
-            .appBarTheme
-            .backgroundColor,
-        foregroundColor: Theme
-            .of(context)
-            .appBarTheme
-            .foregroundColor,
-        toolbarHeight: Theme
-            .of(context)
-            .appBarTheme
-            .toolbarHeight,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
+        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
         leading: BackButton(
           onPressed: () => Navigator.pop(context),
         ),
@@ -53,10 +41,7 @@ class _SIPortalState extends State<SIPortal> {
           padding: EdgeInsets.only(top: 20, bottom: 16),
           child: Text('SIP'),
         ),
-        titleTextStyle: Theme
-            .of(context)
-            .appBarTheme
-            .titleTextStyle,
+        titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         centerTitle: true,
       ),
       body: SafeArea(
@@ -78,17 +63,11 @@ class _SIPortalState extends State<SIPortal> {
                     child: Text.rich(
                       TextSpan(
                           text: 'Hello\n',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .titleSmall,
+                          style: Theme.of(context).textTheme.titleSmall,
                           children: [
                             TextSpan(
                               text: 'Emmanuel Baffoe\nAppiah-Ofori',
-                              style: Theme
-                                  .of(context)
-                                  .textTheme
-                                  .titleLarge,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ]),
                     ),
@@ -125,13 +104,12 @@ class _SIPortalState extends State<SIPortal> {
                         children: [
                           Text(
                             'Faculty:',
-                            style: Theme
-                                .of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .titleSmall
                                 ?.copyWith(
-                              color: textColor3,
-                            ),
+                                  color: textColor3,
+                                ),
                             textAlign: TextAlign.start,
                           ),
                           Padding(
@@ -139,13 +117,12 @@ class _SIPortalState extends State<SIPortal> {
                             child: Text(
                               'Faculty of Computing and\n Information System'
                                   .toUpperCase(),
-                              style: Theme
-                                  .of(context)
+                              style: Theme.of(context)
                                   .textTheme
                                   .titleSmall
                                   ?.copyWith(
-                                color: textColor4,
-                              ),
+                                    color: textColor4,
+                                  ),
                               textAlign: TextAlign.end,
                             ),
                           )
@@ -161,24 +138,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Department:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 'Information Technology'.toUpperCase(),
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -195,24 +170,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Programme:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 'Bsc. Information Technology'.toUpperCase(),
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -229,24 +202,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Level:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '400',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -263,24 +234,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Session:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 'Morning'.toUpperCase(),
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -297,24 +266,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Index Number:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '040919887',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -331,24 +298,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Campus:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 'Tesano'.toUpperCase(),
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -365,24 +330,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Mobile Number:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '0240318640',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -399,24 +362,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Cohort:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -433,24 +394,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Credit Required:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '139',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -467,24 +426,22 @@ class _SIPortalState extends State<SIPortal> {
                             children: [
                               Text(
                                 'Credit Taken:',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor3,
-                                ),
+                                      color: textColor3,
+                                    ),
                                 textAlign: TextAlign.start,
                               ),
                               Text(
                                 '125',
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
                                     ?.copyWith(
-                                  color: textColor4,
-                                ),
+                                      color: textColor4,
+                                    ),
                                 textAlign: TextAlign.end,
                               )
                             ],
@@ -500,64 +457,25 @@ class _SIPortalState extends State<SIPortal> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        elevation: Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .elevation,
+        elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
         landscapeLayout:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .landscapeLayout,
-        showUnselectedLabels:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .showUnselectedLabels,
-        showSelectedLabels:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .showSelectedLabels,
-        unselectedItemColor:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .unselectedItemColor,
-        selectedItemColor:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .selectedItemColor,
+            Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
         backgroundColor:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .backgroundColor,
+            Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         iconSize: 31.89,
-        currentIndex: _currentIndex,
-        selectedLabelStyle:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .selectedLabelStyle,
-        unselectedLabelStyle:
-        Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .unselectedLabelStyle,
-        type: Theme
-            .of(context)
-            .bottomNavigationBarTheme
-            .type,
-        useLegacyColorScheme: false,
+        currentIndex: currentIndex,
+        type: Theme.of(context).bottomNavigationBarTheme.type,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            currentIndex = index;
+            print('THIS IS THE CURRENT INDEX: $currentIndex');
+            print('THIS IS THE VALUE INDEX: $index');
           });
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-              builder: (context) => destinationScreens[index]), (
-              route) => true);
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => destinationScreens[index]),
+              (route) => true);
         },
         items: [
           BottomNavigationBarItem(

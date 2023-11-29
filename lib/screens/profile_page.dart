@@ -1,17 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studyssey/screens/courses/coursepage.dart';
+import 'package:studyssey/screens/courses/course_page.dart';
 import '../../constant.dart';
+import 'chat/chat_page.dart';
+import 'homepage/home_page.dart';
+import 'notification_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   static String routeName = 'ProfilePage';
 
   @override
-  Widget build(BuildContext context) {
+  State<ProfilePage> createState() => _ProfilePageState();
+}
 
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> destinationScreens = [
+      const CoursePage(),
+      const ChatPage(),
+      const HomePage(),
+      const NotificationPage(),
+      const ProfilePage()
+    ];
+    int currentIndex = 0;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -43,10 +58,11 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 1,
-                child: Center(
-                  child: CircleAvatar(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const CircleAvatar(
                     backgroundImage: AssetImage(kCurrentProfile),
                     radius: 62,
                   ),
@@ -55,10 +71,12 @@ class ProfilePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Text(
-                  'Emmanuel B. Appiah-Ofori',
+                  'Emmanuel Baffoe Appiah-Ofori',
                   softWrap: true,
                   style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w700, fontSize: 13.33,color: textColor1),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13.33,
+                      color: textColor1),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -68,7 +86,9 @@ class ProfilePage extends StatelessWidget {
                   'Student',
                   softWrap: true,
                   style: GoogleFonts.manrope(
-                      fontWeight: FontWeight.w500, fontSize: 11.11,color: textColor1),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11.11,
+                      color: textColor1),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -95,7 +115,9 @@ class ProfilePage extends StatelessWidget {
                         child: Text(
                           'Info',
                           style: GoogleFonts.manrope(
-                              fontSize: 13.33, fontWeight: FontWeight.w700,color: textColor1),
+                              fontSize: 13.33,
+                              fontWeight: FontWeight.w700,
+                              color: textColor1),
                         ),
                       ),
                       Padding(
@@ -175,7 +197,7 @@ class ProfilePage extends StatelessWidget {
                                 fontSize: 11.11,
                                 fontWeight: FontWeight.w500,
                                 color: textColor4),
-                                softWrap: true,
+                            softWrap: true,
                           )
                         ],
                       ),
@@ -217,7 +239,9 @@ class ProfilePage extends StatelessWidget {
                                 fontSize: 11.11,
                                 fontWeight: FontWeight.w500,
                                 color: textColor4),
-                            textHeightBehavior: const TextHeightBehavior(leadingDistribution: TextLeadingDistribution.proportional),
+                            textHeightBehavior: const TextHeightBehavior(
+                                leadingDistribution:
+                                    TextLeadingDistribution.proportional),
                           )
                         ],
                       ),
@@ -226,7 +250,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 25.5),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 25.5),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -239,7 +264,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 24, right: 20, bottom: 11.11),
+                padding:
+                    const EdgeInsets.only(left: 24, right: 20, bottom: 11.11),
                 child: Wrap(
                     runSpacing: 5,
                     spacing: 7.78,
@@ -350,8 +376,8 @@ class ProfilePage extends StatelessWidget {
                     ]),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22.78, vertical: 11.11),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 22.78, vertical: 11.11),
                 child: Container(
                   width: 314.44,
                   height: 97.78,
@@ -409,6 +435,48 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: Theme.of(context).bottomNavigationBarTheme.elevation,
+        landscapeLayout:
+            Theme.of(context).bottomNavigationBarTheme.landscapeLayout,
+        backgroundColor:
+            Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        iconSize: 31.89,
+        currentIndex: currentIndex,
+        type: Theme.of(context).bottomNavigationBarTheme.type,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+            print('THIS IS THE CURRENT INDEX: $currentIndex');
+            print('THIS IS THE INDEX VALUE: $index');
+          });
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => destinationScreens[index]),
+              (route) => true);
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kCourseIcon),
+            label: 'Courses',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kSendIcon),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset(kHomeIcon), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kNotificationIcon),
+            label: 'Notification',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(kProfileIcon),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
