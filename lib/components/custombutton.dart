@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
             fixedSize: MaterialStatePropertyAll(
               Size(width!, height!),
             ),
-            alignment: alignmentGeometry,
+        alignment: alignmentGeometry,
           ),
       child: Text(
         text,

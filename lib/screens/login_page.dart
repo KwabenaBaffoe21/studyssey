@@ -125,9 +125,13 @@ class _LoginPageState extends State<LoginPage> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                  label: const Text(
+                                  label:  Text(
                                     'Student Email',
-                                    style: TextStyle(color: color5),
+                                    style: GoogleFonts.manrope(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 13.33,
+                                      color: textColor1,
+                                    ),
                                   ),
                                   contentPadding: const EdgeInsets.symmetric(
                                       vertical: 12, horizontal: 28),
@@ -186,9 +190,13 @@ class _LoginPageState extends State<LoginPage> {
                                         size: 15.47,
                                       ),
                                     ),
-                                    label: const Text(
+                                    label:  Text(
                                       'Password',
-                                      style: TextStyle(color: color5),
+                                      style: GoogleFonts.manrope(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13.33,
+                                        color: textColor1,
+                                      ),
                                     ),
                                     contentPadding: const EdgeInsets.symmetric(
                                         vertical: 12, horizontal: 28),

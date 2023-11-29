@@ -43,7 +43,7 @@ class _PayFeesState extends State<PayFees> {
                       height: 31,
                     ),
                   ),
-                  const SizedBox(width: 113),
+                  const SizedBox(width: 90),
                   Text(
                     'GCTU Pay',
                     style: Theme.of(context)
