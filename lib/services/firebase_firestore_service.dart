@@ -5,40 +5,39 @@ import '../utilize/message_model.dart';
 class FirebaseFirestoreService {
   static final firestore = FirebaseFirestore.instance;
 
-  
-
   static Future<void> addTextMessage({
     required String content,
-    required String receiverID,
+    required String roomID,
   }) async {
+    String senderID = FirebaseAuth.instance.currentUser!.uid;
     final message = Messages(
-      content: content,
+      message: content,
       messageType: MessageType.text,
-      receiverID: receiverID,
-      senderID: FirebaseAuth.instance.currentUser!.uid,
+      roomID: roomID,
+      senderID: senderID,
       sentTime: DateTime.now(),
     );
-    await _addMessageToChat(receiverID, message);
+    await _addMessageToChat(roomID, senderID, message);
   }
 
   static Future<void> _addMessageToChat(
-    String receiverID,
+    String roomID,
+    String senderID,
     Messages messages,
   ) async {
     await firestore
         .collection('chat')
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection('room')
-        .doc('receiverID')
+        .doc(roomID)
         .collection('messages')
-        .add(messages.toJson());
+        .doc(senderID)
+        .set(messages.toJson());
 
-    await firestore
+    /*await firestore
         .collection('chat')
         .doc('receiverID')
         .collection('room')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection('messages')
-        .add(messages.toJson());
+        .add(messages.toJson());*/
   }
 }

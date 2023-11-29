@@ -49,7 +49,7 @@ class MessageBubble extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              messages.content,
+              messages.message,
               style: GoogleFonts.manrope(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,

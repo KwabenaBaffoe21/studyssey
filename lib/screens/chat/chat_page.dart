@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -139,25 +140,11 @@ class _ChatPageState extends State<ChatPage> {
                   ],
                 ),
               ),
-              Consumer<FirebaseProvider>(
-                builder: (context, value, index) => ListView.separated(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: value.users.length,
-                  itemBuilder: (context, index) => value.users[index].uid !=
-                          FirebaseAuth.instance.currentUser?.uid
-                      ? ChatTile(
-                          userModel: value.users[index],
-                        )
-                      : const Padding(padding: EdgeInsets.zero),
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(
-                      color: Colors.transparent,
-                      height: 5,
-                    );
-                  },
-                ),
-              ),
+             StreamBuilder<QuerySnapshot>(stream: FirebaseFirestore.instance.collection('room').snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot>snapshot){
+              if(snapshot.connectionState == ConnectionState.done){
+                return 
+              }
+             })
             ],
           ),
         ),

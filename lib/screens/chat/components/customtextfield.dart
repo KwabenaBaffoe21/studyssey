@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,10 +7,11 @@ import '../../../constant.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.textController,
+    required this.textController, required this.roomID,
   });
 
   final TextEditingController textController;
+  final String roomID;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,20 @@ class CustomTextField extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100), color: buttonColor),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  DocumentReference documentReference =
+                      FirebaseFirestore.instance.collection('messages').doc();
+
+                  try {
+                    documentReference.set({
+                      'message': textController.text.trim(),
+                      'roomID':roomID,
+                    });
+                  } catch (e) {
+                    print('Error creating document: $e');
+                  }
+                  textController.clear();
+                },
                 icon: const Icon(
                   Icons.send,
                   color: color7,
@@ -75,10 +90,3 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
-
-/*Future<void> sendText(context, textController) async {
-  if (textController.text.isNotEmpty) {
-    await FirebaseFirestoreService.addTextMessage(
-        content: textController.text, receiverID: );
-  }
-}*/

@@ -47,7 +47,7 @@ class _ChatRoomState extends State<ChatRoom> {
           builder: (context) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 5),
-              child: CustomTextField(textController: textController),
+              child: CustomTextField(textController: textController, roomID: widget.roomID,),
             );
           },
           onClosing: () {},
@@ -121,3 +121,4 @@ AppBar customAppBar(context, UserModel user) {
     ),
   );
 }
+

@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/constant.dart';
-import 'package:studyssey/screens/chat/chat_group.dart';
 import 'package:studyssey/screens/chat/chat_room.dart';
 import 'package:studyssey/screens/chat/create_group.dart';
 import 'package:studyssey/utilize/room_id.dart';
@@ -151,39 +150,18 @@ class _NewChatState extends State<NewChat> {
                       var docs = updatedDocs[index];
                       return ListTile(
                         onTap: () {
-                          print('HI THERE');
                           var selectedUser = updatedDocs[index];
-                          print('SELECTED USER IS:');
-                          print(selectedUser);
-                          print('end of selected user');
-                          print('SELECTED USER EXISTS');
-                          print(selectedUser.exists);
+
                           if (selectedUser.exists) {
-                            print('everything is true');
                             String currentUserID =
                                 FirebaseAuth.instance.currentUser!.uid;
-                            print(currentUserID);
+
                             String otherUserID =
                                 selectedUser['uid'] as String? ?? '';
 
-                            print(otherUserID);
                             String roomID =
                                 generateRoomID(currentUserID, otherUserID);
-                            print(roomID);
-                            print('uid: ${selectedUser['uid']}');
-                            print('first Name: ${selectedUser['firstName']}');
-                            print('last Name: ${selectedUser['lastName']}');
-                            print('time Stamp: ${selectedUser['timestamp']}');
-                            print(
-                                'profile Image: ${selectedUser['profileImage']}');
-                            print(
-                                'mobile Number: ${selectedUser['mobileNumber']}');
-                            print('address: ${selectedUser['address']}');
-                            print(
-                                'student Email: ${selectedUser['studentEmail']}');
-                            print(
-                                'index Number: ${selectedUser['indexNumber']}');
-                            print('isOnline: ${selectedUser['isOnline']}');
+
                             UserModel userModel = UserModel(
                               uid: selectedUser['uid'] ?? '',
                               firstName: selectedUser['firstName'] ?? '',
@@ -198,8 +176,27 @@ class _NewChatState extends State<NewChat> {
                               indexNumber: selectedUser['indexNumber'] ?? '',
                               isOnline: selectedUser['isOnline'] ?? false,
                             );
-                            print('This the room Id: $roomID');
-                            print(userModel);
+
+                            DocumentReference roomReference = FirebaseFirestore
+                                .instance
+                                .collection('room')
+                                .doc(roomID);
+
+                            try {
+                              List<String> participants = [
+                                currentUserID,
+                                otherUserID
+                              ];
+                              roomReference.set({
+                                'roomID': roomID,
+                                'participants': participants,
+                              });
+
+                              print('Document created successfully!');
+                            } catch (e) {
+                              print('Error creating document: $e');
+                            }
+
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(

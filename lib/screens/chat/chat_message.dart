@@ -8,16 +8,16 @@ class ChatMessages extends StatefulWidget {
   final String receiverID;
   final messages = [
     Messages(
-      content: 'The game was serious, bro!!',
+      message: 'The game was serious, bro!!',
       messageType: MessageType.text,
-      receiverID: '2',
-      senderID: 'JHqy0dhMBDPnOcBnSnLnNjjkHWN2',
+      senderID: '2',
+      roomID: 'JHqy0dhMBDPnOcBnSnLnNjjkHWN2',
       sentTime: DateTime.now(),
     ),
     Messages(
-      content: 'How far?',
+      message: 'How far?',
       messageType: MessageType.text,
-      receiverID: '2',
+      roomID: '2',
       senderID: 'JHqy0dhMBDPnOcBnSnLnNjjkHWN2',
       sentTime: DateTime.now(),
     ),

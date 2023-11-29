@@ -19,12 +19,17 @@ class _CreateGroupState extends State<CreateGroup> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
-        leading: SvgPicture.asset(
-          kBackButtonIcon,
-          height: 31,
-          width: 31,
-          theme: const SvgTheme(
-            currentColor: color1,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: SvgPicture.asset(
+            kBackButtonIcon,
+            height: 31,
+            width: 31,
+            theme: const SvgTheme(
+              currentColor: color1,
+            ),
           ),
         ),
         title: const Text('Create New Group'),
