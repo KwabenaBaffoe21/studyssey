@@ -1,47 +1,130 @@
+import 'package:bubble/bubble.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studyssey/screens/chat/components/message_bubble.dart';
-import 'package:studyssey/utilize/message_model.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:studyssey/constant.dart';
+import 'package:studyssey/utilize/user_model.dart';
 
 class ChatMessages extends StatefulWidget {
-  ChatMessages({super.key, required this.receiverID});
+  const ChatMessages({
+    Key? key,
+    required this.receiverID,
+    required this.userModel,
+  }) : super(key: key);
 
   final String receiverID;
-  final messages = [
-    Messages(
-      message: 'The game was serious, bro!!',
-      messageType: MessageType.text,
-      senderID: '2',
-      roomID: 'JHqy0dhMBDPnOcBnSnLnNjjkHWN2',
-      sentTime: DateTime.now(),
-    ),
-    Messages(
-      message: 'How far?',
-      messageType: MessageType.text,
-      roomID: '2',
-      senderID: 'JHqy0dhMBDPnOcBnSnLnNjjkHWN2',
-      sentTime: DateTime.now(),
-    ),
-  ];
+  final UserModel userModel;
+  final bool isMe = true;
 
   @override
   State<ChatMessages> createState() => _ChatMessagesState();
 }
 
 class _ChatMessagesState extends State<ChatMessages> {
+  late String timeSent =
+      DateFormat.jm().format(DateTime.now()); // Declare timeSent variable
+
+  @override
+  void initState() {
+    super.initState();
+    // Calculate timeSent only once when the widget is initialized
+    timeSent;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: widget.messages.length,
-        itemBuilder: (context, index) {
-          final isMe = widget.receiverID != widget.messages[index].senderID;
-          final isTextMessage =
-              widget.messages[index].messageType == MessageType.text;
-          return isTextMessage
-              ? MessageBubble(
-                  messages: widget.messages[index], isMe: isMe, isImage: false)
-              : MessageBubble(
-                  messages: widget.messages[index], isMe: isMe, isImage: true);
-        });
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('messages')
+          .where('uid', isEqualTo: widget.receiverID)
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container();
+        } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+          return Container();
+        }
+        return ListView.separated(
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            var data = snapshot.data!.docs[index];
+            String otherUser = data['uid'];
+            String currentUser = FirebaseAuth.instance.currentUser?.uid ?? '';
+            print(otherUser);
+            print(currentUser);
+            return Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: otherUser == currentUser
+                  ? Bubble(
+                      alignment: Alignment.centerRight,
+                      nip: BubbleNip.rightTop,
+                      color: color13,
+                      radius: const Radius.circular(4.44),
+                      margin: const BubbleEdges.all(10),
+                      child: _buildMessageContent(data),
+                    )
+                  : Row(
+                      children: [
+                        Container(
+                          width: 30.19,
+                          height: 30.19,
+                          alignment: Alignment.topCenter,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.44),
+                            image: DecorationImage(
+                              image:
+                                  NetworkImage(widget.userModel.profileImage),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Bubble(
+                          alignment: Alignment.centerLeft,
+                          nip: BubbleNip.leftTop,
+                          color: color15,
+                          radius: const Radius.circular(4.44),
+                          margin: const BubbleEdges.all(10),
+                          child: _buildMessageContent(data),
+                        ),
+                      ],
+                    ),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const Divider(
+              height: 5,
+              color: Colors.transparent,
+            );
+          },
+          itemCount: snapshot.data!.docs.length,
+        );
+      },
+    );
+  }
+
+  Widget _buildMessageContent(QueryDocumentSnapshot<Object?> data) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          data['message'],
+          style: GoogleFonts.manrope(
+            fontSize: 16.66,
+            fontWeight: FontWeight.w500,
+            color: textColor1,
+          ),
+        ),
+        Text(
+          timeSent,
+          style: GoogleFonts.manrope(
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+            color: textColor1,
+          ),
+        ),
+      ],
+    );
   }
 }

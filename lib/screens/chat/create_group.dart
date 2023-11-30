@@ -32,7 +32,7 @@ class _CreateGroupState extends State<CreateGroup> {
             ),
           ),
         ),
-        title: const Text('Create New Group'),
+        title: const Text('New Group'),
         titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
         elevation: Theme.of(context).appBarTheme.elevation,
@@ -46,32 +46,50 @@ class _CreateGroupState extends State<CreateGroup> {
           padding:
               const EdgeInsets.symmetric(horizontal: 25.56, vertical: 11.11),
           child: Column(children: [
-            TextField(
-              controller: nameController,
-              keyboardType: TextInputType.text,
-              cursorColor: color1,
-              cursorHeight: 16.66,
-              style: GoogleFonts.manrope(
-                fontSize: 16.66,
-                fontWeight: FontWeight.normal,
-                color: textColor1,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Group Name',
-                hintStyle: GoogleFonts.manrope(
-                  fontSize: 16.66,
-                  fontWeight: FontWeight.normal,
-                  color: color5,
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: const CircleAvatar(
+                    backgroundColor: color5,
+                    radius: 25,
+                    child: Badge(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        size: 31,
+                      ),
+                    ),
+                  ),
                 ),
-                contentPadding:
-                    const EdgeInsets.only(left: 28, top: 7, bottom: 7),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.44),
+                TextField(
+                  controller: nameController,
+                  keyboardType: TextInputType.text,
+                  cursorColor: color1,
+                  cursorHeight: 16.66,
+                  style: GoogleFonts.manrope(
+                    fontSize: 16.66,
+                    fontWeight: FontWeight.normal,
+                    color: textColor1,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: 'Group Name',
+                    hintStyle: GoogleFonts.manrope(
+                      fontSize: 16.66,
+                      fontWeight: FontWeight.normal,
+                      color: color5,
+                    ),
+                    contentPadding:
+                        const EdgeInsets.only(left: 28, top: 7, bottom: 7),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.44),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.44),
+                    ),
+                  ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.44),
-                ),
-              ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -114,7 +132,7 @@ class _CreateGroupState extends State<CreateGroup> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const ChatGroup(),
+              builder: (context) => const SelectParticipants(),
             ),
           );
         },

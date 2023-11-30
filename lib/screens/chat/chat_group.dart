@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/constant.dart';
 
-class ChatGroup extends StatefulWidget {
-  const ChatGroup({super.key});
+class SelectParticipants extends StatefulWidget {
+  const SelectParticipants({super.key});
 
   @override
-  State<ChatGroup> createState() => _ChatGroupState();
+  State<SelectParticipants> createState() => _SelectParticipantsState();
 }
 
-class _ChatGroupState extends State<ChatGroup> {
+class _SelectParticipantsState extends State<SelectParticipants> {
   final textEditingController = TextEditingController();
   var searchName = '';
   @override

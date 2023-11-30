@@ -1,22 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/drawer_screen.dart';
-import 'package:studyssey/screens/chat/blank.dart';
+import 'package:studyssey/screens/chat/chat_room.dart';
 import 'package:studyssey/screens/chat/components/filter_buttons.dart'
     as filter;
-import 'package:studyssey/services/firebase_provider.dart';
 import 'package:studyssey/utilize/user_model.dart';
 import '../../constant.dart';
 import '../courses/course_page.dart';
 import '../homepage/home_page.dart';
 import '../notification_page.dart';
 import '../profile_page.dart';
-import 'new_chat.dart';
+import 'select_profile.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -29,34 +28,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   var searchName = '';
-  final userData = [
-    UserModel(
-      uid: '3iblquexalP3A2Y4Naqg',
-      firstName: 'Morrison Boakye',
-      lastName: 'Boamah',
-      timestamp: DateTime.now(),
-      profileImage:
-          'https://firebasestorage.googleapis.com/v0/b/studyssey-d4df3.appspot.com/o/images%2Fprofiles%2Fprofile2.png?alt=media&token=96495803-ddda-4348-a044-141a89c42833',
-      isOnline: true,
-      mobileNumber: '0240468130',
-      address: 'Kasoa, Nyanyanor',
-      studentEmail: '040919751@live.gctu.edu.gh',
-      indexNumber: '040919751',
-    ),
-    UserModel(
-      uid: 'nWMR5ihkHZ4mhovaNlbG',
-      firstName: 'Prince Baah',
-      lastName: 'Dadzie',
-      timestamp: DateTime.now(),
-      profileImage:
-          'https://firebasestorage.googleapis.com/v0/b/studyssey-d4df3.appspot.com/o/images%2Fprofiles%2Fprofile4.png?alt=media&token=56a20488-9768-4473-9570-ae32d766ea9a',
-      isOnline: false,
-      mobileNumber: '0240468131',
-      address: 'Sweduru',
-      studentEmail: '040919752@live.gctu.edu.gh',
-      indexNumber: '040919752',
-    ),
-  ];
+
   int currentIndex = 0;
   List<Widget> destinationScreens = [
     const CoursePage(),
@@ -67,12 +39,7 @@ class _ChatPageState extends State<ChatPage> {
   ];
   TextEditingController textEditingController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<FirebaseProvider>(context, listen: false).getAllUsers();
-  }
-
+  
   @override
   void dispose() {
     super.dispose();
@@ -142,45 +109,109 @@ class _ChatPageState extends State<ChatPage> {
                 ),
               ),
               StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('messages')
-                      .snapshots(),
-                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (!snapshot.hasData && snapshot.data!.docs.isEmpty) {
-                      print(!snapshot.hasData);
-                      print(snapshot.data!.docs.isEmpty);
-                      return const Blank();
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.done) {
-                      ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            var data = snapshot.data!.docs[index];
-                            return ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(data['profileImage']),
-                                backgroundColor: color5,
-                                radius: 25,
-                              ),
-                              title: Text(data[
-                                  '${data['firstName']} ${data['lastName']}']),
-                              titleTextStyle: GoogleFonts.manrope(
+                stream:
+                    FirebaseFirestore.instance.collection('room').snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return Container();
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      var data = snapshot.data!.docs[index];
+                      List<dynamic> participants = data['participants'];
+
+                      String currentUserUid =
+                          FirebaseAuth.instance.currentUser!.uid;
+
+                      String otherUid = participants
+                          .firstWhere((uid) => uid != currentUserUid);
+
+                      return FutureBuilder<DocumentSnapshot>(
+                        future: FirebaseFirestore.instance
+                            .collection('student')
+                            .doc(otherUid)
+                            .get(),
+                        builder: (context,
+                            AsyncSnapshot<DocumentSnapshot> studentSnapshot) {
+                          if (studentSnapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          if (studentSnapshot.hasError) {
+                            return Text('Error: ${studentSnapshot.error}');
+                          }
+
+                          if (!studentSnapshot.hasData ||
+                              !studentSnapshot.data!.exists) {
+                            return const Text('User not found');
+                          }
+
+                          var studentData = studentSnapshot.data!;
+                          String profileImage = studentData['profileImage'];
+                          String firstName = studentData['firstName'];
+                          String lastName = studentData['lastName'];
+
+                          UserModel userModel = UserModel(
+                            uid: studentData['uid'] ?? '',
+                            firstName: studentData['firstName'] ?? '',
+                            lastName: studentData['lastName'] ?? '',
+                            timestamp: studentData['timestamp']?.toDate() ??
+                                DateTime.now(),
+                            profileImage: studentData['profileImage'] ?? '',
+                            mobileNumber: studentData['mobileNumber'] ?? '',
+                            address: studentData['address'] ?? '',
+                            studentEmail:
+                                studentData['studentEmail'] as String? ?? '',
+                            indexNumber: studentData['indexNumber'] ?? '',
+                            isOnline: studentData['isOnline'] ?? false,
+                          );
+
+                          return ListTile(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatRoom(
+                                    roomID: data['roomID'],
+                                    userModel: userModel,
+                                  ),
+                                ),
+                              );
+                            },
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(profileImage),
+                              backgroundColor: color5,
+                              radius: 28,
+                            ),
+                            title: Text(
+                              '$firstName $lastName',
+                              style: GoogleFonts.manrope(
                                 fontSize: 16.66,
                                 fontWeight: FontWeight.bold,
-                                color: textButton,
+                                color: textColor1,
                               ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const Divider(
-                              height: 5,
-                            );
-                          },
-                          itemCount: snapshot.data!.docs.length);
-                    }
-                    return const CircularProgressIndicator();
-                  })
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider(
+                        height: 5,
+                      );
+                    },
+                    itemCount: snapshot.data!.docs.length,
+                  );
+                },
+              )
             ],
           ),
         ),
@@ -238,7 +269,7 @@ class _ChatPageState extends State<ChatPage> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
-              return const NewChat();
+              return const SelectProfile();
             }),
           );
         },

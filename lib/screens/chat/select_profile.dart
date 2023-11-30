@@ -11,16 +11,16 @@ import 'package:studyssey/screens/chat/create_group.dart';
 import 'package:studyssey/utilize/room_id.dart';
 import 'package:studyssey/utilize/user_model.dart';
 
-class NewChat extends StatefulWidget {
-  const NewChat({
+class SelectProfile extends StatefulWidget {
+  const SelectProfile({
     super.key,
   });
 
   @override
-  State<NewChat> createState() => _NewChatState();
+  State<SelectProfile> createState() => _SelectProfileState();
 }
 
-class _NewChatState extends State<NewChat> {
+class _SelectProfileState extends State<SelectProfile> {
   final textEditingController = TextEditingController();
   var searchName = "";
 
@@ -201,7 +201,7 @@ class _NewChatState extends State<NewChat> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    ChatRoom(user: userModel, roomID: roomID),
+                                    ChatRoom(userModel: userModel, roomID: roomID),
                               ),
                               (route) => false,
                             );

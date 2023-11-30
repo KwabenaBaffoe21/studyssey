@@ -9,9 +9,13 @@ import 'chat_message.dart';
 import 'components/customtextfield.dart';
 
 class ChatRoom extends StatefulWidget {
-  const ChatRoom({super.key, required this.user, required this.roomID});
+  const ChatRoom({
+    super.key,
+    required this.userModel,
+    required this.roomID,
+  });
 
-  final UserModel user;
+  final UserModel userModel;
   final String roomID;
 
   @override
@@ -35,11 +39,13 @@ class _ChatRoomState extends State<ChatRoom> {
       },
       child: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: customAppBar(context, widget.user),
+        appBar: customAppBar(context, widget.userModel),
         body: Column(
           children: [
+            
             ChatMessages(
-              receiverID: widget.user.uid,
+              receiverID: widget.userModel.uid,
+              userModel: widget.userModel,
             ),
           ],
         ),
@@ -47,7 +53,11 @@ class _ChatRoomState extends State<ChatRoom> {
           builder: (context) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 5),
-              child: CustomTextField(textController: textController, roomID: widget.roomID, userModel: widget.user,),
+              child: CustomTextField(
+                textController: textController,
+                roomID: widget.roomID,
+                userModel: widget.userModel,
+              ),
             );
           },
           onClosing: () {},
@@ -58,7 +68,7 @@ class _ChatRoomState extends State<ChatRoom> {
 }
 
 AppBar customAppBar(context, UserModel user) {
-  String fullName = user.firstName + user.lastName;
+  String fullName = '${user.firstName} ${user.lastName}';
   String lastSeen = DateFormat.jm().format(DateTime.now());
   return AppBar(
     toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
@@ -121,4 +131,3 @@ AppBar customAppBar(context, UserModel user) {
     ),
   );
 }
-

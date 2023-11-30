@@ -31,7 +31,7 @@ class _ChatTileState extends State<ChatTile> {
           context,
           MaterialPageRoute(
             builder: (context) => ChatRoom(
-              user: widget.userModel,
+              userModel: widget.userModel,
               roomID: roomID,
             ),
           ),

@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:studyssey/utilize/user_model.dart';
 import '../../../constant.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.textController, required this.roomID, required this.userModel,
+    required this.textController,
+    required this.roomID,
+    required this.userModel,
   });
 
   final TextEditingController textController;
@@ -27,7 +30,7 @@ class CustomTextField extends StatelessWidget {
               cursorHeight: 16.66,
               cursorColor: color1,
               autocorrect: true,
-              keyboardType: TextInputType.multiline,
+              keyboardType: TextInputType.text,
               style: GoogleFonts.manrope(
                 fontSize: 16.66,
                 fontWeight: FontWeight.w500,
@@ -71,7 +74,7 @@ class CustomTextField extends StatelessWidget {
                   try {
                     documentReference.set({
                       'message': textController.text.trim(),
-                      'roomID':roomID,
+                      'roomID': roomID,
                       'uid': userModel.uid,
                     });
                   } catch (e) {
@@ -80,7 +83,7 @@ class CustomTextField extends StatelessWidget {
                   textController.clear();
                 },
                 icon: const Icon(
-                  Icons.send,
+                  Icons.arrow_forward_rounded,
                   color: color7,
                   size: 31,
                 ),
