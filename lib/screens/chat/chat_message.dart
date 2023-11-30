@@ -9,14 +9,13 @@ import 'package:studyssey/utilize/user_model.dart';
 
 class ChatMessages extends StatefulWidget {
   const ChatMessages({
-    Key? key,
+    super.key,
     required this.receiverID,
     required this.userModel,
-  }) : super(key: key);
+  });
 
   final String receiverID;
   final UserModel userModel;
-  final bool isMe = true;
 
   @override
   State<ChatMessages> createState() => _ChatMessagesState();
@@ -38,7 +37,7 @@ class _ChatMessagesState extends State<ChatMessages> {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('messages')
-          .where('uid', isEqualTo: widget.receiverID)
+          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -48,19 +47,19 @@ class _ChatMessagesState extends State<ChatMessages> {
         }
         return ListView.separated(
           shrinkWrap: true,
+          reverse: true,
           itemBuilder: (context, index) {
             var data = snapshot.data!.docs[index];
             String otherUser = data['uid'];
             String currentUser = FirebaseAuth.instance.currentUser?.uid ?? '';
-            print(otherUser);
-            print(currentUser);
+
             return Padding(
               padding: const EdgeInsets.only(left: 10),
               child: otherUser == currentUser
                   ? Bubble(
                       alignment: Alignment.centerRight,
                       nip: BubbleNip.rightTop,
-                      color: color13,
+                      color: color14,
                       radius: const Radius.circular(4.44),
                       margin: const BubbleEdges.all(10),
                       child: _buildMessageContent(data),

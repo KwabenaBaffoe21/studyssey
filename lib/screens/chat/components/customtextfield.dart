@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -70,12 +71,13 @@ class CustomTextField extends StatelessWidget {
                 onPressed: () {
                   DocumentReference documentReference =
                       FirebaseFirestore.instance.collection('messages').doc();
-
+                  String currentUser =
+                      FirebaseAuth.instance.currentUser?.uid ?? '';
                   try {
                     documentReference.set({
                       'message': textController.text.trim(),
                       'roomID': roomID,
-                      'uid': userModel.uid,
+                      'uid': currentUser,
                     });
                   } catch (e) {
                     print('Error creating document: $e');
