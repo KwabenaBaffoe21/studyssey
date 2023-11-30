@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studyssey/components/pdf.dart';
 
-import '../utilize/styles.dart';
+import '../styles.dart';
 
 class TextExpansionPanel extends StatefulWidget {
   final String title;

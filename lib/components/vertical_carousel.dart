@@ -17,7 +17,7 @@ class VerticalCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, route);
+        Navigator.pushNamed(context, route);
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 22.2),

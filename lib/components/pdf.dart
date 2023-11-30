@@ -2,7 +2,7 @@ import 'package:document_viewer/document_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../utilize/styles.dart';
+import '../styles.dart';
 
 class FileOpener extends StatelessWidget {
   final String filename;

@@ -5,6 +5,7 @@ import 'package:studyssey/components/custompageindicator.dart';
 import 'package:studyssey/components/slide_show.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
 import 'package:studyssey/screens/chat/chat_page.dart';
+import 'package:studyssey/screens/courses/course_content_page.dart';
 import 'package:studyssey/screens/courses/see_more.dart';
 import 'package:studyssey/screens/homepage/home_page.dart';
 import 'package:studyssey/screens/notification_page.dart';
@@ -69,6 +70,7 @@ class _CoursePageState extends State<CoursePage> {
                   imagePath: kSearchIcon,
                   title: 'Search',
                   searchName: searchName,
+                  color: color6,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 11),
@@ -165,7 +167,7 @@ class _CoursePageState extends State<CoursePage> {
                         VerticalCarousel(
                             imagePath: kCourseImage6,
                             text: 'it 308 - advanced java technologies',
-                            route: CoursePage.routeName),
+                            route: CourseContent.routeName),
                       ],
                     ),
                   ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:studyssey/screens/GetAssistance/getassistance.dart';
+import 'package:studyssey/screens/courses/course_content_page.dart';
 import 'package:studyssey/screens/courses/see_more.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/pay_fees/pay_fees.dart';
@@ -11,8 +13,6 @@ import 'package:studyssey/screens/notification_page.dart';
 import 'package:studyssey/screens/onboarding/onboarding_page.dart';
 import 'package:studyssey/screens/resetpage/reset_page.dart';
 import 'package:studyssey/screens/sip/sip.dart';
-
-
 
 Map<String, WidgetBuilder> routes = {
   OnboardingPage.routeName: (context) => const OnboardingPage(),
@@ -27,5 +27,6 @@ Map<String, WidgetBuilder> routes = {
   NewsGCTU.routeName: (context) => const NewsGCTU(),
   PayFees.routeName: (context) => const PayFees(),
   PrintRegistrationPage.routeName: (context) => const PrintRegistrationPage(),
+  CourseContent.routeName: (context) => const CourseContent(),
+  GetAssistance.routeName: (context) => const GetAssistance(),
 };
-

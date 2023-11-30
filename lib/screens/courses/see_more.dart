@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:studyssey/components/customsearchbar.dart';
 import 'package:studyssey/components/vertical_carousel.dart';
 import 'package:studyssey/constant.dart';
+import 'package:studyssey/screens/courses/course_content_page.dart';
 import '../../components/custombackbutton.dart';
 import 'course_page.dart';
 
@@ -77,7 +78,7 @@ class _SeeMoreState extends State<SeeMore> {
                     VerticalCarousel(
                         imagePath: kCourseImage6,
                         text: 'it 308 - advanced java technologies',
-                        route: CoursePage.routeName),
+                        route: CourseContent.routeName),
                   ],
                 ),
               )
