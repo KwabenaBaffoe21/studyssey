@@ -8,14 +8,11 @@ import 'package:studyssey/constant.dart';
 import 'package:studyssey/utilize/user_model.dart';
 
 class ChatMessages extends StatefulWidget {
-  const ChatMessages({
-    super.key,
-    required this.receiverID,
-    required this.userModel,
-  });
+  const ChatMessages(
+      {super.key, required this.userModel, required this.roomID});
 
-  final String receiverID;
   final UserModel userModel;
+  final String roomID;
 
   @override
   State<ChatMessages> createState() => _ChatMessagesState();
@@ -37,7 +34,8 @@ class _ChatMessagesState extends State<ChatMessages> {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('messages')
-          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .where('roomID', isEqualTo: widget.roomID)
+          .orderBy('timestamp', descending: true)
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

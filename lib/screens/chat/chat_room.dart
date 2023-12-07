@@ -42,10 +42,9 @@ class _ChatRoomState extends State<ChatRoom> {
         appBar: customAppBar(context, widget.userModel),
         body: Column(
           children: [
-            
             ChatMessages(
-              receiverID: widget.userModel.uid,
               userModel: widget.userModel,
+              roomID: widget.roomID,
             ),
           ],
         ),
