@@ -43,7 +43,7 @@ class _ChatMessagesState extends State<ChatMessages> {
         } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return Container();
         }
-        return ListView.separated(
+        return ListView.builder(
           shrinkWrap: true,
           reverse: true,
           itemBuilder: (context, index) {
@@ -87,12 +87,6 @@ class _ChatMessagesState extends State<ChatMessages> {
                         ),
                       ],
                     ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const Divider(
-              height: 5,
-              color: Colors.transparent,
             );
           },
           itemCount: snapshot.data!.docs.length,
