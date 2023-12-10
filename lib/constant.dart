@@ -229,3 +229,8 @@ const kGCTUNewsImage23 = 'images/gctu_news_images/gctuNewsImages23.jpg';
 const kGCTUNewsImage24 = 'images/gctu_news_images/gctuNewsImages24.jpg';
 const kGCTUNewsImage25 = 'images/gctu_news_images/gctuNewsImages25.jpg';
 const kGCTUNewsImage26 = 'images/gctu_news_images/gctuNewsImages26.jpg';
+
+// FLutterwave payment gateway keys
+const String publicKey = 'FLWPUBK_TEST-8fb13024e0d6106957dd33b2bc24226f-X';
+const String secretKey = 'FLWSECK_TEST-e0e1af25d6c460bbd178bddead72afdb-X';
+const String encryptionKey = 'FLWSECK_TESTad44bd6d762f';

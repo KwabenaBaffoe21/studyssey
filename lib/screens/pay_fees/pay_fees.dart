@@ -1,7 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterwave_standard/flutterwave.dart';
+import 'package:studyssey/components/showsnackbar.dart';
 import 'package:studyssey/screens/pay_fees/transactionscomp.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 import '../../constant.dart';
 import 'alltransaction.dart';
 import 'labelsecteventcal.dart';
@@ -16,7 +20,7 @@ class PayFees extends StatefulWidget {
 }
 
 class _PayFeesState extends State<PayFees> {
-  late final WebViewController controller = WebViewController();
+  // late final WebViewController controller = WebViewController();
   //create variable
   double _tuitionValue = 1402.5;
   final List<double> tuitionValues = [0, 1402.5, 2805];
@@ -25,35 +29,35 @@ class _PayFeesState extends State<PayFees> {
   final List<int> values = [0, 233, 466];
   String amount = '';
   String email = 'appiahoforie@gmail.com';
-  @override
-  void initState() {
-    super.initState();
-    controller
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0x00000000))
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onProgress: (int progress) {
-            print('WebView is loading (progress : $progress)');
-          },
-          onPageStarted: (String url) {
-            print('WebView has started at $url');
-          },
-          onPageFinished: (String url) {
-            print('WebBiew has finished at $url');
-          },
-          onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith('https://www.youtube.com')) {
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
-        ),
-      )
-      ..loadRequest(
-        Uri.parse('file:///home/ebao/payment.html?email=$email&amount=$amount'),
-      );
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   controller
+  //     ..setJavaScriptMode(JavaScriptMode.unrestricted)
+  //     ..setBackgroundColor(const Color(0x00000000))
+  //     ..setNavigationDelegate(
+  //       NavigationDelegate(
+  //         onProgress: (int progress) {
+  //           print('WebView is loading (progress : $progress)');
+  //         },
+  //         onPageStarted: (String url) {
+  //           print('WebView has started at $url');
+  //         },
+  //         onPageFinished: (String url) {
+  //           print('WebBiew has finished at $url');
+  //         },
+  //         onNavigationRequest: (NavigationRequest request) {
+  //           if (request.url.startsWith('https://www.youtube.com')) {
+  //             return NavigationDecision.prevent;
+  //           }
+  //           return NavigationDecision.navigate;
+  //         },
+  //       ),
+  //     )
+  //     ..loadRequest(
+  //       Uri.parse('file:///home/ebao/payment.html?email=$email&amount=$amount'),
+  //     );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -342,11 +346,8 @@ class _PayFeesState extends State<PayFees> {
                                         children: [
                                           GestureDetector(
                                             onTap: () async {
-                                              amount = (_tuitionValue * 100)
-                                                  .toString();
-                                              WebViewWidget(
-                                                controller: controller,
-                                              );
+                                              amount = _tuitionValue.toString();
+                                              await paymentInitialization();
                                             },
                                             child: Transform.flip(
                                               flipX: true,
@@ -515,10 +516,10 @@ class _PayFeesState extends State<PayFees> {
                                     ),
                                     const SizedBox(width: 20),
                                     Container(
-                                      //width: 33,
-                                      //height: 34,
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 2, vertical: 4),
+                                        horizontal: 2,
+                                        vertical: 4,
+                                      ),
                                       decoration: ShapeDecoration(
                                         color: color6,
                                         shape: RoundedRectangleBorder(
@@ -535,11 +536,8 @@ class _PayFeesState extends State<PayFees> {
                                         children: [
                                           GestureDetector(
                                             onTap: () async {
-                                              amount = (_currentValue * 100)
-                                                  .toString();
-                                              // WebViewWidget(
-                                              //   controller: controller,
-                                              // );
+                                              amount = _currentValue.toString();
+                                              await paymentInitialization();
                                             },
                                             child: Transform.flip(
                                               flipX: true,
@@ -610,5 +608,31 @@ class _PayFeesState extends State<PayFees> {
         ]),
       ),
     );
+  }
+
+  paymentInitialization() async {
+    final Customer customer = Customer(email: email);
+    final Flutterwave flutterwave = Flutterwave(
+        context: context,
+        publicKey: publicKey,
+        txRef: DateTime.now().toString(),
+        amount: amount,
+        customer: customer,
+        paymentOptions: "card,mobile money",
+        customization: Customization(
+          logo: kLogo,
+          title: 'Studyssey',
+        ),
+        redirectUrl: PayFees.routeName,
+        isTestMode: true,
+        currency: 'GHS');
+    try {
+      final ChargeResponse response = await flutterwave.charge();
+      print(response.toString());
+      showSnackBar('Transaction Successful', context, color1);
+    } catch (error) {
+      print('Payment error: $error');
+      showSnackBar('Payment failed', context, color1);
+    }
   }
 }

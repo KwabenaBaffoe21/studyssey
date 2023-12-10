@@ -54,9 +54,8 @@ dependencies:
   path_provider: ^2.1.1
   permission_handler: ^10.4.5
   bubble: ^1.2.1
-  paystack_standard: ^0.0.8
   dialogflow_flutter_plus: ^0.0.1
-  webview_flutter: ^4.4.2
+  flutterwave_standard: ^1.0.8
 
 dev_dependencies:
   flutter_lints: ^3.0.1
