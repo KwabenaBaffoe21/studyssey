@@ -1,7 +1,6 @@
-import 'package:document_viewer/document_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import '../open_doc.dart';
 import '../styles.dart';
 
 class FileOpener extends StatelessWidget {
@@ -21,9 +20,9 @@ class FileOpener extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         //OpenFilex.open(fileLink);
-        DocumentViewer(filePath: fileLink);
+        //DocumentViewer(filePath: fileLink);
+        openFile(fileLink);
       },
-
       child: Material(
         color: Colors.transparent,
         child: Column(

@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:studyssey/components/showsnackbar.dart';
 import 'package:studyssey/screens/pay_fees/transactionscomp.dart';
-//import 'package:webview_flutter/webview_flutter.dart';
+
 import '../../constant.dart';
 import 'alltransaction.dart';
 import 'labelsecteventcal.dart';
@@ -20,7 +20,6 @@ class PayFees extends StatefulWidget {
 }
 
 class _PayFeesState extends State<PayFees> {
-  // late final WebViewController controller = WebViewController();
   //create variable
   double _tuitionValue = 1402.5;
   final List<double> tuitionValues = [0, 1402.5, 2805];
@@ -29,35 +28,6 @@ class _PayFeesState extends State<PayFees> {
   final List<int> values = [0, 233, 466];
   String amount = '';
   String email = 'appiahoforie@gmail.com';
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   controller
-  //     ..setJavaScriptMode(JavaScriptMode.unrestricted)
-  //     ..setBackgroundColor(const Color(0x00000000))
-  //     ..setNavigationDelegate(
-  //       NavigationDelegate(
-  //         onProgress: (int progress) {
-  //           print('WebView is loading (progress : $progress)');
-  //         },
-  //         onPageStarted: (String url) {
-  //           print('WebView has started at $url');
-  //         },
-  //         onPageFinished: (String url) {
-  //           print('WebBiew has finished at $url');
-  //         },
-  //         onNavigationRequest: (NavigationRequest request) {
-  //           if (request.url.startsWith('https://www.youtube.com')) {
-  //             return NavigationDecision.prevent;
-  //           }
-  //           return NavigationDecision.navigate;
-  //         },
-  //       ),
-  //     )
-  //     ..loadRequest(
-  //       Uri.parse('file:///home/ebao/payment.html?email=$email&amount=$amount'),
-  //     );
-  // }
 
   @override
   Widget build(BuildContext context) {

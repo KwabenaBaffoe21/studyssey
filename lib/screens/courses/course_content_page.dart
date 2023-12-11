@@ -4,12 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../components/expansionTile.dart';
 import '../../styles.dart';
 
-// void main() {
-//   runApp(
-//       const Directionality(textDirection: TextDirection.ltr, child: Content())
-//   );
-// }
-
 class CourseContent extends StatefulWidget {
   const CourseContent({super.key});
   static String routeName = 'CourseContent';

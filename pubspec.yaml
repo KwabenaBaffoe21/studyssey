@@ -56,6 +56,7 @@ dependencies:
   bubble: ^1.2.1
   dialogflow_flutter_plus: ^0.0.1
   flutterwave_standard: ^1.0.8
+  open_file: ^3.3.2
 
 dev_dependencies:
   flutter_lints: ^3.0.1
@@ -95,6 +96,10 @@ flutter:
      - images/profile/
      - images/courses/
      - images/gctu_news_images/
+     - images/assets/
+     - images/assets/images/
+     - images/assets/resources/
+     - images/assets/svg/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
