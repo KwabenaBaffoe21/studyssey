@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           } else if (snapshot.connectionState == ConnectionState.done) {
-            String name = snapshot.data!.get('firstName');
+            var studentData = snapshot.data!;
             return Scaffold(
               appBar: AppBar(
                 elevation: 0,
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                                       ?.copyWith(color: color13),
                                 ),
                                 Text(
-                                  name,
+                                  studentData['firstName'],
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
@@ -125,10 +125,10 @@ class _HomePageState extends State<HomePage> {
                                     height: 23.05,
                                     width: 23.02,
                                   ),
-                                  child: const CircleAvatar(
+                                  child: CircleAvatar(
                                     backgroundColor: color8,
                                     backgroundImage:
-                                        AssetImage(kCurrentProfile),
+                                        NetworkImage(studentData['profileImage']),
                                     radius: 30,
                                   ),
                                 ),
