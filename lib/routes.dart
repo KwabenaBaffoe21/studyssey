@@ -3,7 +3,7 @@ import 'package:studyssey/screens/GetAssistance/getassistance.dart';
 import 'package:studyssey/screens/courses/course_content_page.dart';
 import 'package:studyssey/screens/courses/see_more.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
-import 'package:studyssey/screens/pay_fees/pay_fees.dart';
+import 'package:studyssey/screens/pay_fees/payment_dashboard.dart';
 import 'package:studyssey/screens/print_registration_page.dart';
 import 'package:studyssey/screens/resetpage/change_password.dart';
 import 'package:studyssey/screens/courses/course_page.dart';
@@ -25,8 +25,8 @@ Map<String, WidgetBuilder> routes = {
   SeeMore.routeName: (context) => const SeeMore(),
   SIPortal.routeName: (context) => const SIPortal(),
   NewsGCTU.routeName: (context) => const NewsGCTU(),
-  PayFees.routeName: (context) => const PayFees(),
   PrintRegistrationPage.routeName: (context) => const PrintRegistrationPage(),
   CourseContent.routeName: (context) => const CourseContent(),
   GetAssistance.routeName: (context) => const GetAssistance(),
+  PaymentDashboard.routeName: (context) => const PaymentDashboard()
 };

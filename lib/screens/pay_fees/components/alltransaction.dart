@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:studyssey/screens/pay_fees/transactionscomp.dart';
-import '../../constant.dart';
-import 'pay_fees.dart';
+import 'package:studyssey/screens/pay_fees/components/transactionscomp.dart';
+import '../../../constant.dart';
+
 
 class TransactionsAll extends StatelessWidget {
   const TransactionsAll({super.key});
@@ -20,13 +20,10 @@ class TransactionsAll extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const PayFees()),
-                    );
+                    Navigator.pop(context);
                   },
                   child: SvgPicture.asset(
-                    'assets/svg/back.svg',
+                    kBackButtonIcon,
                     width: 15,
                     height: 10,
                   ),

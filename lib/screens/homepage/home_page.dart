@@ -8,7 +8,7 @@ import 'package:studyssey/screens/GetAssistance/getassistance.dart';
 import 'package:studyssey/screens/courses/course_page.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
 import 'package:studyssey/screens/notification_page.dart';
-import 'package:studyssey/screens/pay_fees/pay_fees.dart';
+import 'package:studyssey/screens/pay_fees/payment_dashboard.dart';
 import 'package:studyssey/screens/sip/sip.dart';
 import '../../components/drawer_screen.dart';
 import 'home_tile.dart';
@@ -127,8 +127,8 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   child: CircleAvatar(
                                     backgroundColor: color8,
-                                    backgroundImage:
-                                        NetworkImage(studentData['profileImage']),
+                                    backgroundImage: NetworkImage(
+                                        studentData['profileImage']),
                                     radius: 30,
                                   ),
                                 ),
@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                                   imageHeight: 93.66,
                                   color: color6,
                                   textColor: textColor6,
-                                  route: PayFees.routeName,
+                                  route: PaymentDashboard.routeName,
                                 ),
                               ),
                               Padding(
@@ -263,7 +263,14 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }
-          return const CircularProgressIndicator();
+          return Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: const Color(0xffffffff),
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         });
   }
 }

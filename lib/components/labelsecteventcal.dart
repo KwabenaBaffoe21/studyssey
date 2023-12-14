@@ -1,6 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import '../../constant.dart';
+import '../constant.dart';
 
 
 class LabelSectionECal extends StatelessWidget {

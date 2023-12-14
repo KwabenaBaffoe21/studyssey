@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studyssey/screens/courses/course_page.dart';
 import 'package:studyssey/screens/gctu_news/NewsGCTU.dart';
-import 'package:studyssey/screens/pay_fees/pay_fees.dart';
+import 'package:studyssey/screens/pay_fees/payment_dashboard.dart';
 import 'package:studyssey/screens/sip/sip.dart';
 import 'components/content.dart';
 
@@ -159,7 +159,7 @@ List<Widget> upperContent = [
   Content(
     title: 'Pay Fees',
     imagePath: kPayFeesIcon,
-    routeName: PayFees.routeName,
+    routeName: PaymentDashboard.routeName,
   ),
   Content(
     title: 'SIP',

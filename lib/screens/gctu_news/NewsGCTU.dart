@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:studyssey/components/drawer_screen.dart';
 import '../../constant.dart';
-import '../pay_fees/labelsecteventcal.dart';
+import '../../components/labelsecteventcal.dart';
 import 'Announcements.dart';
 import 'EventsCalendarall.dart';
 import 'Eventscalendar.dart';

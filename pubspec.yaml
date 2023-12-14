@@ -46,7 +46,6 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   cloud_firestore: ^4.12.2
   provider: ^6.0.5
-  url_launcher: ^6.2.1
   printing: ^5.11.1
   pdf: ^3.10.6
   document_viewer: ^0.0.1
@@ -57,6 +56,8 @@ dependencies:
   dialogflow_flutter_plus: ^0.0.1
   flutterwave_standard: ^1.0.8
   open_file: ^3.3.2
+  flutter_custom_tabs: ^1.2.1
+  url_launcher: ^6.2.2
 
 dev_dependencies:
   flutter_lints: ^3.0.1
